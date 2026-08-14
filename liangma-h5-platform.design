@@ -14,8 +14,8 @@
           "version": 1,
           "contentHeight": 900,
           "viewportWidth": 375,
-          "sourceHash": "fnv1a-cd043941",
-          "measuredAt": 1786586480903
+          "sourceHash": "fnv1a-c5cf9719",
+          "measuredAt": 1786701245153
         }
       },
       "devMetadata": {
@@ -46,10 +46,10 @@
         "group": 0,
         "layoutSnapshot": {
           "version": 1,
-          "contentHeight": 1202,
+          "contentHeight": 1182,
           "viewportWidth": 375,
-          "sourceHash": "fnv1a-644113aa",
-          "measuredAt": 1786586480903
+          "sourceHash": "fnv1a-d6db5813",
+          "measuredAt": 1786701245153
         }
       },
       "devMetadata": {
@@ -87,7 +87,14 @@
       "canvasData": {
         "x": 648,
         "y": 0,
-        "group": 0
+        "group": 0,
+        "layoutSnapshot": {
+          "version": 1,
+          "contentHeight": 900,
+          "viewportWidth": 375,
+          "sourceHash": "fnv1a-f19e868d",
+          "measuredAt": 1786701245153
+        }
       },
       "devMetadata": {
         "htmlSrc": "pages/interactive-services.html",
@@ -119,12 +126,19 @@
       "id": "page-business-analytics",
       "title": "经营分析",
       "type": "page",
-      "version": 1,
+      "version": 7,
       "createdAt": 1755052800000,
       "canvasData": {
         "x": 972,
         "y": 0,
-        "group": 0
+        "group": 0,
+        "layoutSnapshot": {
+          "version": 1,
+          "contentHeight": 2241,
+          "viewportWidth": 375,
+          "sourceHash": "fnv1a-013699f5",
+          "measuredAt": 1786701245153
+        }
       },
       "devMetadata": {
         "htmlSrc": "pages/business-analytics.html",
@@ -161,7 +175,14 @@
       "canvasData": {
         "x": 1296,
         "y": 0,
-        "group": 0
+        "group": 0,
+        "layoutSnapshot": {
+          "version": 1,
+          "contentHeight": 1192,
+          "viewportWidth": 375,
+          "sourceHash": "fnv1a-e92a98d9",
+          "measuredAt": 1786701245153
+        }
       },
       "devMetadata": {
         "htmlSrc": "pages/policy-learning.html",
@@ -198,7 +219,14 @@
       "canvasData": {
         "x": 1716,
         "y": 0,
-        "group": 0
+        "group": 0,
+        "layoutSnapshot": {
+          "version": 1,
+          "contentHeight": 1016,
+          "viewportWidth": 375,
+          "sourceHash": "fnv1a-d9de7872",
+          "measuredAt": 1786701245153
+        }
       },
       "devMetadata": {
         "htmlSrc": "pages/public-info.html",
@@ -230,7 +258,14 @@
       "canvasData": {
         "x": 1944,
         "y": 0,
-        "group": 0
+        "group": 0,
+        "layoutSnapshot": {
+          "version": 1,
+          "contentHeight": 1301,
+          "viewportWidth": 375,
+          "sourceHash": "fnv1a-695f6590",
+          "measuredAt": 1786701245153
+        }
       },
       "devMetadata": {
         "htmlSrc": "pages/supervision-feedback.html",
@@ -262,7 +297,14 @@
       "canvasData": {
         "x": 1944,
         "y": 200,
-        "group": 0
+        "group": 0,
+        "layoutSnapshot": {
+          "version": 1,
+          "contentHeight": 1877,
+          "viewportWidth": 375,
+          "sourceHash": "fnv1a-9c16baea",
+          "measuredAt": 1786701245153
+        }
       },
       "devMetadata": {
         "htmlSrc": "pages/supervision-feedback-v2.html",
@@ -294,7 +336,14 @@
       "canvasData": {
         "x": 2268,
         "y": 0,
-        "group": 0
+        "group": 0,
+        "layoutSnapshot": {
+          "version": 1,
+          "contentHeight": 974,
+          "viewportWidth": 375,
+          "sourceHash": "fnv1a-99c8033e",
+          "measuredAt": 1786701245153
+        }
       },
       "devMetadata": {
         "htmlSrc": "pages/consumer-insights.html",
@@ -323,7 +372,7 @@
     "deviceType": "mobile",
     "projectName": "两码 H5 服务平台",
     "designLibrary": null,
-    "visualEditorEnabled": true,
+    "visualEditorEnabled": false,
     "showEdge": false
   }
 }
