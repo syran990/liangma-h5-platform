@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>交互服务</title>
+<style id="theme-vars">
+:root {
+  --lm-primary-50:#eff6ff;--lm-primary-100:#dbeafe;--lm-primary-200:#bfdbfe;--lm-primary-300:#93c5fd;--lm-primary-400:#60a5fa;--lm-primary-500:#3b82f6;--lm-primary-600:#2563eb;--lm-primary-700:#1d4ed8;--lm-primary-800:#1e40af;--lm-primary-900:#1e3a8a;
+  --lm-neutral-0:#ffffff;--lm-neutral-50:#f8fafc;--lm-neutral-100:#f1f5f9;--lm-neutral-200:#e2e8f0;--lm-neutral-300:#cbd5e1;--lm-neutral-400:#94a3b8;--lm-neutral-500:#64748b;--lm-neutral-600:#475569;--lm-neutral-700:#334155;--lm-neutral-800:#1e293b;--lm-neutral-900:#2563eb;
+  --lm-background:#f8fafc;--lm-foreground:#1e293b;--lm-card:#ffffff;--lm-card-foreground:#1e293b;--lm-popover:#ffffff;--lm-popover-foreground:#1e293b;--lm-primary:#2563eb;--lm-primary-foreground:#ffffff;--lm-muted:#f1f5f9;--lm-muted-foreground:#64748b;--lm-border:#e2e8f0;--lm-input:#e2e8f0;--lm-ring:#3b82f6;
+  --lm-state-success:#10b981;--lm-state-success-bg:#ecfdf5;--lm-state-warning:#f59e0b;--lm-state-warning-bg:#fffbeb;--lm-state-error:#ef4444;--lm-state-error-bg:#fef2f2;--lm-state-info:#3b82f6;--lm-state-info-bg:#eff6ff;
+  --lm-radius-sm:4px;--lm-radius-md:8px;--lm-radius-lg:12px;--lm-radius-xl:16px;--lm-radius-full:9999px;
+  --lm-shadow-1:0 1px 2px rgba(15,23,42,0.05),0 1px 1px rgba(15,23,42,0.03);--lm-shadow-2:0 4px 12px -4px rgba(15,23,42,0.1);--lm-shadow-3:0 16px 40px -12px rgba(15,23,42,0.18);
+  --lm-space-1:4px;--lm-space-2:8px;--lm-space-3:12px;--lm-space-4:16px;--lm-space-5:20px;--lm-space-6:24px;--lm-space-7:32px;--lm-space-8:40px;
+  --lm-font-sans:Inter,"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --lm-font-mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --lm-text-xs:12px;--lm-text-sm:13px;--lm-text-base:15px;--lm-text-lg:17px;--lm-text-xl:20px;--lm-text-2xl:24px;--lm-text-3xl:30px;
+}
+.dark{--lm-background:#0f172a;--lm-foreground:#f8fafc;--lm-card:#1e293b;--lm-card-foreground:#f8fafc;--lm-popover:#1e293b;--lm-popover-foreground:#f8fafc;--lm-primary:#60a5fa;--lm-primary-foreground:#0f172a;--lm-muted:#334155;--lm-muted-foreground:#94a3b8;--lm-border:#334155;--lm-input:#334155;--lm-ring:#60a5fa;}
+:root{--color-background:var(--lm-background);--color-foreground:var(--lm-foreground);--color-card:var(--lm-card);--color-card-foreground:var(--lm-card-foreground);--color-popover:var(--lm-popover);--color-popover-foreground:var(--lm-popover-foreground);--color-primary:var(--lm-primary);--color-primary-foreground:var(--lm-primary-foreground);--color-muted:var(--lm-muted);--color-muted-foreground:var(--lm-muted-foreground);--color-border:var(--lm-border);--color-input:var(--lm-input);--color-ring:var(--lm-ring);--radius-sm:var(--lm-radius-sm);--radius-md:var(--lm-radius-md);--radius-lg:var(--lm-radius-lg);--radius-xl:var(--lm-radius-xl);--radius-full:var(--lm-radius-full);}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.1/dist/index.global.js"></script>
+<script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+<style type="text/tailwindcss">
+@theme inline {
+  --color-background:var(--lm-background);--color-foreground:var(--lm-foreground);--color-card:var(--lm-card);--color-card-foreground:var(--lm-card-foreground);--color-popover:var(--lm-popover);--color-popover-foreground:var(--lm-popover-foreground);--color-primary:var(--lm-primary);--color-primary-foreground:var(--lm-primary-foreground);--color-muted:var(--lm-muted);--color-muted-foreground:var(--lm-muted-foreground);--color-border:var(--lm-border);--color-input:var(--lm-input);--color-ring:var(--lm-ring);--radius-sm:var(--lm-radius-sm);--radius-md:var(--lm-radius-md);--radius-lg:var(--lm-radius-lg);--radius-xl:var(--lm-radius-xl);
+}
+@layer base { body{background:var(--lm-background);color:var(--lm-foreground);font-family:var(--lm-font-sans);-webkit-font-smoothing:antialiased;} }
+</style>
+<style>
+.no-scrollbar::-webkit-scrollbar{display:none;}
+.no-scrollbar{-ms-overflow-style:none;scrollbar-width:none;}
+.safe-area-pb{padding-bottom:max(12px,env(safe-area-inset-bottom));}
+</style>
+</head>
+<body class="min-h-screen bg-[var(--lm-background)] text-[var(--lm-foreground)] flex flex-col">
+  <div class="flex-1 w-full max-w-md mx-auto pb-4">
+    
+<header class="bg-[#2563eb] text-white">
+  <div class="max-w-md mx-auto px-4 py-5 text-center">
+    <h1 class="text-xl font-semibold tracking-tight">客户服务码系统</h1>
+    <p class="text-sm text-white/80 mt-1">零售户专属服务平台</p>
+  </div>
+</header><main class="px-4 py-4 space-y-5"><!-- Tab 切换 -->
+<div class="flex p-1 bg-[var(--lm-muted)] rounded-lg" id="tab-bar">
+  <button data-tab="suggestion" class="flex-1 py-2 text-sm font-medium rounded-md bg-white text-[var(--lm-primary)] shadow-[var(--lm-shadow-1)] transition-all">意见建议</button>
+  <button data-tab="report" class="flex-1 py-2 text-sm text-[var(--lm-muted-foreground)] transition-all">问题举报</button>
+</div>
+
+<!-- ========== 意见建议 Tab ========== -->
+<div id="tab-suggestion" class="space-y-5">
+  <!-- 智能自动答复 -->
+  <div class="flex items-center gap-2 mb-3">
+    <div class="pl-2 py-1 border-l-4 border-yellow-400 bg-[var(--lm-muted)] rounded-r-md">
+      <span class="text-sm font-semibold text-[var(--lm-foreground)]">智能自动答复</span>
+    </div>
+  </div>
+  <div class="bg-white rounded-xl border border-[var(--lm-border)] shadow-[var(--lm-shadow-1)] p-4">
+    <!-- 常见问题快捷入口 -->
+    <div class="mb-3">
+      <p class="text-xs text-[var(--lm-muted-foreground)] mb-2">常见问题</p>
+      <div class="flex flex-wrap gap-2">
+        <button class="quick-q px-3 py-1.5 text-xs rounded-full border border-[var(--lm-border)] text-[var(--lm-primary)] hover:bg-[var(--lm-primary-50)] transition-colors">什么时候送货？</button>
+        <button class="quick-q px-3 py-1.5 text-xs rounded-full border border-[var(--lm-border)] text-[var(--lm-primary)] hover:bg-[var(--lm-primary-50)] transition-colors">怎么少发了？</button>
+        <button class="quick-q px-3 py-1.5 text-xs rounded-full border border-[var(--lm-border)] text-[var(--lm-primary)] hover:bg-[var(--lm-primary-50)] transition-colors">几点订货？</button>
+        <button class="quick-q px-3 py-1.5 text-xs rounded-full border border-[var(--lm-border)] text-[var(--lm-primary)] hover:bg-[var(--lm-primary-50)] transition-colors">档位怎么评？</button>
+        <button class="quick-q px-3 py-1.5 text-xs rounded-full border border-[var(--lm-border)] text-[var(--lm-primary)] hover:bg-[var(--lm-primary-50)] transition-colors">许可证到期怎么续证？</button>
+      </div>
+    </div>
+    <!-- 输入框 -->
+    <div class="flex gap-2">
+      <input type="text" id="smart-input" placeholder="输入您的问题..." class="flex-1 px-3 py-2 text-sm rounded-lg border border-[var(--lm-border)] bg-[var(--lm-background)] focus:outline-none focus:ring-2 focus:ring-[var(--lm-ring)]">
+      <button id="smart-send" class="px-4 py-2 text-sm font-medium text-white rounded-lg bg-[var(--lm-primary)] whitespace-nowrap flex items-center gap-1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        提问
+      </button>
+    </div>
+    <!-- 答复区域（默认隐藏） -->
+    <div id="smart-reply" class="hidden mt-4 pt-4 border-t border-[var(--lm-border)]">
+      <!-- 用户提问 -->
+      <div class="flex justify-end mb-3">
+        <div class="max-w-[80%] px-3 py-2 text-sm rounded-lg rounded-tr-sm bg-[var(--lm-primary)] text-white" id="reply-user-q">什么时候送货？</div>
+      </div>
+      <!-- 系统答复 -->
+      <div class="flex gap-2">
+        <div class="shrink-0 w-8 h-8 rounded-full bg-[var(--lm-primary-50)] flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-[var(--lm-primary)]"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <div class="max-w-[80%]">
+          <div class="px-3 py-2 text-sm rounded-lg rounded-tl-sm bg-[var(--lm-muted)] text-[var(--lm-foreground)]">
+            <p class="font-medium mb-1">智能答复：</p>
+            <p class="text-[var(--lm-muted-foreground)] leading-relaxed">您所在片区本周配送时间为【4月15日（周二）】，请提前做好收货准备。您本周的订单已于【4月14日】签收。</p>
+          </div>
+          <p class="text-xs text-[var(--lm-muted-foreground)] mt-1 ml-1">匹配度：95% · 知识库自动回复</p>
+          <!-- 操作按钮 -->
+          <div class="flex gap-2 mt-3">
+            <button id="btn-resolved" class="flex-1 py-2 text-xs font-medium rounded-lg border border-[var(--lm-state-success)] text-[var(--lm-state-success)] hover:bg-[var(--lm-state-success-bg)] flex items-center justify-center gap-1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><polyline points="20 6 9 17 4 12"/></svg>
+              已解决
+            </button>
+            <button id="btn-transfer" class="flex-1 py-2 text-xs font-medium rounded-lg bg-[var(--lm-primary)] text-white hover:bg-[var(--lm-primary-700)] flex items-center justify-center gap-1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              转人工服务
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 已解决提示 -->
+    <div id="resolved-msg" class="hidden mt-4 p-3 rounded-lg bg-[var(--lm-state-success-bg)] text-[var(--lm-state-success)] text-xs text-center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 inline-block mr-1"><polyline points="20 6 9 17 4 12"/></svg>
+      感谢您的反馈，问题已标记为已解决！
+    </div>
+  </div>
+
+  <!-- 转人工服务表单（默认隐藏） -->
+  <div id="human-form-section" class="hidden">
+    <div class="flex items-center gap-2 mb-3">
+      <div class="pl-2 py-1 border-l-4 border-yellow-400 bg-[var(--lm-muted)] rounded-r-md">
+        <span class="text-sm font-semibold text-[var(--lm-foreground)]">转人工服务</span>
+      </div>
+    </div>
+    <div class="bg-white rounded-xl border border-[var(--lm-border)] shadow-[var(--lm-shadow-1)] p-4">
+      <div class="space-y-3">
+        <div>
+          <label class="text-xs text-[var(--lm-muted-foreground)] mb-1 block">问题类型</label>
+          <select class="w-full px-3 py-2 text-sm rounded-lg border border-[var(--lm-border)] bg-[var(--lm-background)]">
+            <option>经营服务 - 货源不足</option>
+            <option>经营服务 - 订货疑问</option>
+            <option>政策咨询 - 档位规则</option>
+            <option>意见建议 - 服务改进</option>
+          </select>
+        </div>
+        <div>
+          <label class="text-xs text-[var(--lm-muted-foreground)] mb-1 block">问题描述</label>
+          <textarea rows="3" placeholder="请详细描述您的问题或建议..." class="w-full px-3 py-2 text-sm rounded-lg border border-[var(--lm-border)] bg-[var(--lm-background)] focus:outline-none focus:ring-2 focus:ring-[var(--lm-ring)] resize-none"></textarea>
+        </div>
+        <div class="flex items-center gap-2 text-sm text-[var(--lm-muted-foreground)]">
+          <div class="w-8 h-8 rounded-lg border border-dashed border-[var(--lm-border)] flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </div>
+          <span class="text-xs">添加图片附件</span>
+        </div>
+        <button class="w-full py-2.5 text-sm font-medium text-white rounded-lg bg-[var(--lm-primary)] flex items-center justify-center gap-1.5">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          提交反馈
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 问卷填写 -->
+  <div class="flex items-center gap-2 mb-3">
+    <div class="pl-2 py-1 border-l-4 border-yellow-400 bg-[var(--lm-muted)] rounded-r-md">
+      <span class="text-sm font-semibold text-[var(--lm-foreground)]">问卷填写</span>
+    </div>
+  </div>
+  <div class="bg-white rounded-xl border border-[var(--lm-border)] shadow-[var(--lm-shadow-1)] p-4 mb-3">
+    <div class="flex items-center justify-between mb-2">
+      <div>
+        <p class="text-sm font-semibold">2026年二季度客户满意度调查</p>
+        <p class="text-xs text-[var(--lm-muted-foreground)] mt-0.5">截止日期：2026-06-30</p>
+      </div>
+      <span class="px-2 py-0.5 rounded-full text-xs bg-[var(--lm-state-warning-bg)] text-[var(--lm-state-warning)]">待填写</span>
+    </div>
+    <button class="w-full py-2 text-sm text-[var(--lm-primary)] rounded-lg border border-[var(--lm-primary)] mt-2">去填写</button>
+  </div>
+  <div class="bg-white rounded-xl border border-[var(--lm-border)] shadow-[var(--lm-shadow-1)] p-4">
+    <div class="flex items-center justify-between">
+      <div>
+        <p class="text-sm font-semibold">新品市场反馈问卷</p>
+        <p class="text-xs text-[var(--lm-muted-foreground)] mt-0.5">已参与 · 谢谢您的反馈</p>
+      </div>
+      <span class="px-2 py-0.5 rounded-full text-xs bg-[var(--lm-state-success-bg)] text-[var(--lm-state-success)]">已完成</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- ========== 问题举报 Tab ========== -->
+<div id="tab-report" class="hidden space-y-5">
+  <!-- 举报须知 -->
+  <div class="flex items-start gap-2 p-3 rounded-lg bg-[var(--lm-state-error-bg)] text-[var(--lm-state-error)]">
+    <div class="shrink-0 mt-0.5">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    </div>
+    <div class="text-xs">
+      <p class="font-medium">举报须知</p>
+      <p class="mt-0.5">请如实填写举报信息，恶意举报将承担相应法律责任。我们会对您的信息严格保密。</p>
+    </div>
+  </div>
+
+  <!-- 举报表单 -->
+  <div class="flex items-center gap-2 mb-3">
+    <div class="pl-2 py-1 border-l-4 border-yellow-400 bg-[var(--lm-muted)] rounded-r-md">
+      <span class="text-sm font-semibold text-[var(--lm-foreground)]">举报信息</span>
+    </div>
+  </div>
+  <div class="bg-white rounded-xl border border-[var(--lm-border)] shadow-[var(--lm-shadow-1)] p-4">
+    <div class="space-y-3">
+      <!-- 举报类型 -->
+      <div>
+        <label class="text-xs text-[var(--lm-muted-foreground)] mb-1 block">举报类型 <span class="text-[var(--lm-state-error)]">*</span></label>
+        <select class="w-full px-3 py-2 text-sm rounded-lg border border-[var(--lm-border)] bg-[var(--lm-background)]">
+          <option>违规经营 - 无证经营</option>
+          <option>违规经营 - 超范围经营</option>
+          <option>违规经营 - 假冒伪劣卷烟</option>
+          <option>违规经营 - 走私卷烟</option>
+          <option>价格违法 - 低价倾销</option>
+          <option>价格违法 - 哄抬价格</option>
+          <option>服务态度 - 客户经理违规</option>
+          <option>其他</option>
+        </select>
+      </div>
+      <!-- 被举报对象 -->
+      <div>
+        <label class="text-xs text-[var(--lm-muted-foreground)] mb-1 block">被举报对象/区域 <span class="text-[var(--lm-state-error)]">*</span></label>
+        <input type="text" placeholder="请输入店铺名称、地址或区域" class="w-full px-3 py-2 text-sm rounded-lg border border-[var(--lm-border)] bg-[var(--lm-background)] focus:outline-none focus:ring-2 focus:ring-[var(--lm-ring)]">
+      </div>
+      <!-- 发生时间 -->
+      <div>
+        <label class="text-xs text-[var(--lm-muted-foreground)] mb-1 block">发生时间</label>
+        <input type="date" class="w-full px-3 py-2 text-sm rounded-lg border border-[var(--lm-border)] bg-[var(--lm-background)] text-[var(--lm-muted-foreground)]">
+      </div>
+      <!-- 详细描述 -->
+      <div>
+        <label class="text-xs text-[var(--lm-muted-foreground)] mb-1 block">详细描述 <span class="text-[var(--lm-state-error)]">*</span></label>
+        <textarea rows="4" placeholder="请详细描述违规行为的时间、地点、经过等相关信息..." class="w-full px-3 py-2 text-sm rounded-lg border border-[var(--lm-border)] bg-[var(--lm-background)] focus:outline-none focus:ring-2 focus:ring-[var(--lm-ring)] resize-none"></textarea>
+      </div>
+      <!-- 图片附件 -->
+      <div>
+        <label class="text-xs text-[var(--lm-muted-foreground)] mb-1 block">证据图片</label>
+        <div class="flex items-center gap-2">
+          <div class="w-16 h-16 rounded-lg border border-dashed border-[var(--lm-border)] flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-[var(--lm-muted-foreground)]"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </div>
+          <div class="text-xs text-[var(--lm-muted-foreground)]">
+            <p>点击上传照片</p>
+            <p class="mt-0.5">最多3张，支持 JPG/PNG</p>
+          </div>
+        </div>
+      </div>
+      <!-- 联系方式 -->
+      <div>
+        <label class="text-xs text-[var(--lm-muted-foreground)] mb-1 block">联系方式</label>
+        <input type="text" placeholder="手机号（选填，便于反馈处理结果）" class="w-full px-3 py-2 text-sm rounded-lg border border-[var(--lm-border)] bg-[var(--lm-background)] focus:outline-none focus:ring-2 focus:ring-[var(--lm-ring)]">
+      </div>
+      <!-- 匿名举报 -->
+      <div class="flex items-center justify-between py-1">
+        <span class="text-sm text-[var(--lm-foreground)]">匿名举报</span>
+        <button type="button" id="anon-toggle" class="relative w-11 h-6 rounded-full bg-[var(--lm-primary)] transition-colors">
+          <span class="absolute top-0.5 right-0.5 w-5 h-5 rounded-full bg-white shadow transition-transform"></span>
+        </button>
+      </div>
+      <!-- 提交按钮 -->
+      <button class="w-full py-2.5 text-sm font-medium text-white rounded-lg bg-[var(--lm-state-error)] flex items-center justify-center gap-1.5">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        提交举报
+      </button>
+    </div>
+  </div>
+
+  <!-- 举报记录 -->
+  <div class="flex items-center gap-2 mb-3">
+    <div class="pl-2 py-1 border-l-4 border-yellow-400 bg-[var(--lm-muted)] rounded-r-md">
+      <span class="text-sm font-semibold text-[var(--lm-foreground)]">举报记录</span>
+    </div>
+  </div>
+  <div class="bg-white rounded-xl border border-[var(--lm-border)] shadow-[var(--lm-shadow-1)] p-4 mb-3">
+    <div class="flex items-center justify-between mb-2">
+      <div>
+        <p class="text-sm font-semibold">违规经营 - 假冒伪劣卷烟</p>
+        <p class="text-xs text-[var(--lm-muted-foreground)] mt-0.5">提交时间：2026-03-15 14:20</p>
+      </div>
+      <span class="px-2 py-0.5 rounded-full text-xs bg-[var(--lm-state-success-bg)] text-[var(--lm-state-success)]">已处理</span>
+    </div>
+    <div class="text-xs text-[var(--lm-muted-foreground)] bg-[var(--lm-muted)] rounded-lg p-2 mt-2">
+      <p>处理结果：经核实，被举报店铺存在违规行为，已移交专卖执法部门处理。</p>
+    </div>
+  </div>
+  <div class="bg-white rounded-xl border border-[var(--lm-border)] shadow-[var(--lm-shadow-1)] p-4">
+    <div class="flex items-center justify-between mb-2">
+      <div>
+        <p class="text-sm font-semibold">价格违法 - 低价倾销</p>
+        <p class="text-xs text-[var(--lm-muted-foreground)] mt-0.5">提交时间：2026-02-28 10:05</p>
+      </div>
+      <span class="px-2 py-0.5 rounded-full text-xs bg-[var(--lm-primary-50)] text-[var(--lm-primary)]">处理中</span>
+    </div>
+    <div class="text-xs text-[var(--lm-muted-foreground)] bg-[var(--lm-muted)] rounded-lg p-2 mt-2">
+      <p>当前状态：专卖部门已受理，正在调查核实中。</p>
+    </div>
+  </div>
+
+  <!-- 处理进度 -->
+  <div class="flex items-center gap-2 mb-3">
+    <div class="pl-2 py-1 border-l-4 border-yellow-400 bg-[var(--lm-muted)] rounded-r-md">
+      <span class="text-sm font-semibold text-[var(--lm-foreground)]">处理进度</span>
+    </div>
+  </div>
+  <div class="bg-white rounded-xl border border-[var(--lm-border)] shadow-[var(--lm-shadow-1)] p-4">
+    <div class="space-y-4">
+      <div class="flex gap-3">
+        <div class="flex flex-col items-center">
+          <div class="w-6 h-6 rounded-full bg-[var(--lm-state-success)] text-white flex items-center justify-center shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div class="w-0.5 flex-1 bg-[var(--lm-border)] mt-1"></div>
+        </div>
+        <div class="flex-1 pb-3">
+          <p class="text-sm font-medium">已提交</p>
+          <p class="text-xs text-[var(--lm-muted-foreground)] mt-0.5">2026-02-28 10:05 · 价格违法-低价倾销</p>
+        </div>
+      </div>
+      <div class="flex gap-3">
+        <div class="flex flex-col items-center">
+          <div class="w-6 h-6 rounded-full bg-[var(--lm-state-success)] text-white flex items-center justify-center shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div class="w-0.5 flex-1 bg-[var(--lm-border)] mt-1"></div>
+        </div>
+        <div class="flex-1 pb-3">
+          <p class="text-sm font-medium">已受理</p>
+          <p class="text-xs text-[var(--lm-muted-foreground)] mt-0.5">专卖部门 已接收举报</p>
+        </div>
+      </div>
+      <div class="flex gap-3">
+        <div class="flex flex-col items-center">
+          <div class="w-6 h-6 rounded-full bg-[var(--lm-primary)] text-white flex items-center justify-center shrink-0">
+            <div class="w-2 h-2 rounded-full bg-white animate-pulse"></div>
+          </div>
+          <div class="w-0.5 flex-1 bg-[var(--lm-border)] mt-1"></div>
+        </div>
+        <div class="flex-1 pb-3">
+          <p class="text-sm font-medium text-[var(--lm-primary)]">调查中</p>
+          <p class="text-xs text-[var(--lm-muted-foreground)] mt-0.5">专卖执法人员现场核查中</p>
+        </div>
+      </div>
+      <div class="flex gap-3">
+        <div class="flex flex-col items-center">
+          <div class="w-6 h-6 rounded-full bg-[var(--lm-muted)] flex items-center justify-center shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 text-[var(--lm-muted-foreground)]"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+        </div>
+        <div class="flex-1">
+          <p class="text-sm text-[var(--lm-muted-foreground)]">待结案</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+  <div class="h-16"></div>
+  </div>
+  <nav data-mobile-nav="global" class="fixed bottom-0 left-0 z-50 w-full bg-white border-t border-[var(--lm-border)] safe-area-pb"><div class="w-full max-w-md mx-auto grid grid-cols-4 h-16"><a href="./basic-services.html" data-nav-key="retail-basic" data-dom-id="nav-retail-basic" class="min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[var(--lm-muted-foreground)]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 shrink-0"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span class="text-[11px] leading-none whitespace-nowrap max-w-full truncate">基础服务</span></a><a href="./interactive-services.html" data-nav-key="retail-interactive" data-dom-id="nav-retail-interactive" class="min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[var(--lm-primary)] font-medium"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 shrink-0"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span class="text-[11px] leading-none whitespace-nowrap max-w-full truncate">交互服务</span></a><a href="./business-analytics.html" data-nav-key="retail-analytics" data-dom-id="nav-retail-analytics" class="min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[var(--lm-muted-foreground)]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 shrink-0"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg><span class="text-[11px] leading-none whitespace-nowrap max-w-full truncate">经营分析</span></a><a href="./policy-learning.html" data-nav-key="retail-policy" data-dom-id="nav-retail-policy" class="min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[var(--lm-muted-foreground)]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 shrink-0"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg><span class="text-[11px] leading-none whitespace-nowrap max-w-full truncate">政策教学</span></a></div></nav>
+  <script>
+    if(window.lucide) lucide.createIcons();
+
+    // 智能自动答复
+    var smartInput = document.getElementById('smart-input');
+    var smartSend = document.getElementById('smart-send');
+    var smartReply = document.getElementById('smart-reply');
+    var replyUserQ = document.getElementById('reply-user-q');
+    var resolvedMsg = document.getElementById('resolved-msg');
+    var humanForm = document.getElementById('human-form-section');
+    var btnResolved = document.getElementById('btn-resolved');
+    var btnTransfer = document.getElementById('btn-transfer');
+
+    var replyMap = {
+      '什么时候送货？': '您所在片区本周配送时间为【4月15日（周二）】，请提前做好收货准备。您本周的订单已于【4月14日】签收。',
+      '怎么少发了？': '您反映的问题已记录，系统已通知物流管理员核查，将在3个工作日内与您联系处理，给您带来不便深表歉意。',
+      '几点订货？': '订货时间为每周六上午八点，请在【扣款日】16:00前完成提交。',
+      '档位怎么评？': '您当前档位为【8档】。档位每季度根据销量、销售金额、一二类烟销量三项指标评定一次。',
+      '许可证到期怎么续证？': '零售许可证到期时间在零售许可证上已标注出。请携带负责人身份证、营业执照、房屋租赁合同或房产证明至峨山县政务服务大厅二楼办理续期，建议提前7-14天办理。办证大厅电话：0877-4011628'
+     };
+
+    function showReply(question) {
+      var answer = replyMap[question] || '您好！您的问题已收到，系统正在匹配最佳答复。如未找到匹配答案，建议点击"转人工服务"由客户经理为您解答。';
+      replyUserQ.textContent = question;
+      var replyText = smartReply.querySelector('.text-\\[var\\(--lm-muted-foreground\\)\\].leading-relaxed');
+      if (replyText) replyText.textContent = answer;
+      smartReply.classList.remove('hidden');
+      resolvedMsg.classList.add('hidden');
+      humanForm.classList.add('hidden');
+    }
+
+    if (smartSend) {
+      smartSend.addEventListener('click', function() {
+        var q = smartInput.value.trim();
+        if (!q) return;
+        showReply(q);
+      });
+    }
+    if (smartInput) {
+      smartInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          var q = smartInput.value.trim();
+          if (q) showReply(q);
+        }
+      });
+    }
+    document.querySelectorAll('.quick-q').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var q = btn.textContent.trim();
+        smartInput.value = q;
+        showReply(q);
+      });
+    });
+    if (btnResolved) {
+      btnResolved.addEventListener('click', function() {
+        smartReply.classList.add('hidden');
+        resolvedMsg.classList.remove('hidden');
+      });
+    }
+    if (btnTransfer) {
+      btnTransfer.addEventListener('click', function() {
+        humanForm.classList.remove('hidden');
+        humanForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
+
+    // Tab 切换
+    const tabBtns = document.querySelectorAll('#tab-bar button[data-tab]');
+    const tabSuggestion = document.getElementById('tab-suggestion');
+    const tabReport = document.getElementById('tab-report');
+
+    tabBtns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        const target = btn.dataset.tab;
+        // 更新按钮样式
+        tabBtns.forEach(function(b) {
+          if (b.dataset.tab === target) {
+            b.classList.add('font-medium', 'bg-white', 'text-[var(--lm-primary)]', 'shadow-[var(--lm-shadow-1)]');
+            b.classList.remove('text-[var(--lm-muted-foreground)]');
+          } else {
+            b.classList.remove('font-medium', 'bg-white', 'text-[var(--lm-primary)]', 'shadow-[var(--lm-shadow-1)]');
+            b.classList.add('text-[var(--lm-muted-foreground)]');
+          }
+        });
+        // 切换内容
+        if (target === 'suggestion') {
+          tabSuggestion.classList.remove('hidden');
+          tabReport.classList.add('hidden');
+        } else {
+          tabReport.classList.remove('hidden');
+          tabSuggestion.classList.add('hidden');
+        }
+      });
+    });
+
+    // 匿名举报 toggle
+    var anonToggle = document.getElementById('anon-toggle');
+    var anonOn = true;
+    if (anonToggle) {
+      var anonKnob = anonToggle.querySelector('span');
+      anonToggle.addEventListener('click', function() {
+        anonOn = !anonOn;
+        if (anonOn) {
+          anonToggle.classList.add('bg-[var(--lm-primary)]');
+          anonToggle.classList.remove('bg-[var(--lm-neutral-300)]');
+          anonKnob.style.transform = '';
+          anonKnob.classList.remove('left-0.5');
+          anonKnob.classList.add('right-0.5');
+        } else {
+          anonToggle.classList.remove('bg-[var(--lm-primary)]');
+          anonToggle.classList.add('bg-[var(--lm-neutral-300)]');
+          anonKnob.classList.remove('right-0.5');
+          anonKnob.classList.add('left-0.5');
+        }
+      });
+    }
+  </script>
+</body>
+</html>

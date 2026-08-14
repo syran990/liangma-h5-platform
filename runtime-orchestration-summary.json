@@ -1,0 +1,352 @@
+{
+  "schemaVersion": "1.0",
+  "skillProvenance": {
+    "name": "solo-design",
+    "version": "2026.07.22.00.00.00",
+    "version_source": "skill-release-manifest.json",
+    "schema_version": "1.0",
+    "release": "prompt-base-cloud-ssot-migration",
+    "read_status": "loaded"
+  },
+  "project": {
+    "resolvedLane": "existing_edit_add_comparison",
+    "intentProfile": {
+      "caseFamily": "new_project",
+      "deviceType": "mobile",
+      "operatingMode": "free-explore",
+      "replicationMode": "none",
+      "pageCount": 8,
+      "pageCountJustification": "两码平台包含一个入口页 + 零售户端 4 个模块 + 消费者端 3 个模块，共 8 页；均为 P0 核心页面，单设备 mobile，符合弹性 cap 条件"
+    },
+    "selectedIntentWorkflowRead": true,
+    "contextRequirementsLoaded": [
+      { "path": "shared-runtime/runtime-boundaries/lane-runtime-contracts.md", "readStatus": "loaded", "bodyRead": true },
+      { "path": "shared-runtime/agent-dispatch-runtime/lane-dispatch-index.md", "readStatus": "loaded", "bodyRead": true },
+      { "path": "shared-runtime/agent-dispatch-runtime/shared-page-rendering-kernel.md", "readStatus": "loaded", "bodyRead": true },
+      { "path": "delivery-quality/page-rendering-quality-gate.md", "readStatus": "loaded", "bodyRead": true },
+      { "path": "delivery-quality/design-artifact-validation.md", "readStatus": "loaded", "bodyRead": true },
+      { "path": "delivery-quality/delivery-evidence-contract.md", "readStatus": "loaded", "bodyRead": true },
+      { "path": "visual-experience/visual-experience-guidelines.md", "readStatus": "loaded", "bodyRead": true },
+      { "path": "visual-experience/visual-checkpoint-protocol.md", "readStatus": "loaded", "bodyRead": true }
+    ],
+    "contextReadScope": [
+      "intent-workflows/intent-project-complex-build/start-complex-project-build.md",
+      "intent-workflows/intent-project-complex-build/00-requirement-and-style-intake.md",
+      "intent-workflows/intent-project-complex-build/01-graphic-asset-preparation.md",
+      "intent-workflows/intent-project-complex-build/02-page-composition.md",
+      "intent-workflows/intent-project-complex-build/03-interaction-validation-delivery.md",
+      "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+      "intent-workflows/intent-project-complex-build/complex-page-dispatch-contract.md",
+      "intent-workflows/intent-project-complex-build/interaction-wiring-plan.md",
+      "shared-runtime/design-artifact-formats/design-project-file-format.md",
+      "shared-runtime/orchestration-summary-contract/orchestration-summary-contract.md",
+      "delivery-quality/reference-material-ingestion-rules.md",
+      "delivery-quality/long-requirement-intake-rules.md"
+    ],
+    "readScopeLedger": [],
+    "dispatchPreflightManifest": [],
+    "expectedDispatches": [],
+    "validationRunDiscipline": {
+      "maxFullValidationRuns": 2,
+      "softWarningsTriggerRepair": false,
+      "blockingRepairMode": "targeted-once",
+      "forbiddenRepairTriggers": ["soft-warning-only", "provenance-warning-only", "style-warning-only"]
+    },
+    "validationHistory": [],
+    "validationRepairLedger": [],
+    "validationSnapshot": {},
+    "artifactReadinessEvidence": {},
+    "lowValueCallWatchdog": {
+      "applies": true,
+      "noProgressNextAction": "proceed_to_dispatch_or_readiness"
+    },
+    "sourceAuthorityLock": null,
+    "visualQualityCheckpoints": [
+      { "checkpointId": "vc-01", "dimension": "visual-anchor", "expected": "入口页以两码品牌色 + 双入口卡片为视觉锚点，零售户端/消费者端分别使用统一头部标题 + 底部标签导航", "evidenceTarget": "pages/entry.html#hero-cards" },
+      { "checkpointId": "vc-02", "dimension": "information-hierarchy", "expected": "每页按模块分组，黄色边框 section 标题标签区分功能区块，卡片承载详情，关键数据使用大号数字突出", "evidenceTarget": "all-pages#section-labels" },
+      { "checkpointId": "vc-03", "dimension": "composition-structure", "expected": "移动单列流式布局，顶部固定标题栏，内容区 16px 安全边距，底部流式标签导航，图表区域使用响应式 canvas/SVG", "evidenceTarget": "all-pages#layout" },
+      { "checkpointId": "vc-04", "dimension": "implementation-strategy", "expected": "使用项目品牌 CSS + Tailwind CDN，卡片使用白底 + 细边框或轻阴影，状态标签使用语义色背景，图标使用 Lucide", "evidenceTarget": "all-pages#tokens-and-components" }
+    ],
+    "operation": "edit",
+    "deviceType": "mobile",
+    "projectName": "两码 H5 服务平台",
+    "projectPath": "/Users/syran/Library/Application Support/TRAE SOLO CN/ModularData/ai-agent/work-mode-projects/6a7d1cc5f405f8cf9401b8ac/liangma-h5-platform",
+    "designRead": "移动 H5 双端服务平台 / 卷烟零售户 + 消费者 / 政府/服务 tone / 信息密集型 / 避免花哨渐变和霓虹效果",
+    "designDials": { "layoutVariance": 2, "motionIntensity": 2, "visualDensity": 4 },
+    "styleDefinitionBrief": "简洁大方的政务服务风移动 H5：白底浅灰背景、蓝色主色、绿色/橙色状态色、卡片式模块、黄色边框 section 标签、底部 tab 导航。",
+    "sharedProjectShellContract": {
+      "mobileNavigation": {
+        "applies": true,
+        "type": "bottom-tab",
+        "heightPx": 64,
+        "position": "flow-bottom",
+        "activeState": "primary icon+label color only; geometry stays identical",
+        "items": [
+          { "key": "retail-basic", "label": "基础服务", "icon": "home" },
+          { "key": "retail-interactive", "label": "交互服务", "icon": "message-square" },
+          { "key": "retail-analytics", "label": "经营分析", "icon": "bar-chart-2" },
+          { "key": "retail-policy", "label": "政策教学", "icon": "book-open" },
+          { "key": "consumer-public", "label": "公开信息", "icon": "shield-check" },
+          { "key": "consumer-supervision", "label": "监督反馈", "icon": "flag" },
+          { "key": "consumer-insights", "label": "消费洞察", "icon": "pie-chart" }
+        ],
+        "structure": {
+          "navTag": "nav",
+          "navClass": "w-full bg-white border-t border-[var(--lm-border)] safe-area-pb",
+          "innerClass": "w-full max-w-md mx-auto grid h-16",
+          "itemTag": "a",
+          "itemClass": "min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[var(--lm-muted-foreground)] hover:text-[var(--lm-primary)]",
+          "iconClass": "w-5 h-5 shrink-0",
+          "labelClass": "text-[11px] leading-none whitespace-nowrap max-w-full truncate",
+          "activeRule": "text-[var(--lm-primary)] font-medium",
+          "markerAttr": "data-mobile-nav=\"global\"",
+          "canonicalHtmlByKey": {
+            "none": "",
+            "retail-basic": "<nav data-mobile-nav=\"global\" class=\"w-full bg-white border-t border-[var(--lm-border)]\"><div class=\"w-full max-w-md mx-auto grid grid-cols-4 h-16\"><a href=\"#\" data-nav-key=\"retail-basic\" data-dom-id=\"nav-retail-basic\" class=\"min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[var(--lm-primary)] font-medium\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"w-5 h-5\"><path d=\"M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"></path><polyline points=\"9 22 9 12 15 12 15 22\"></polyline></svg><span class=\"text-[11px] leading-none\">基础服务</span></a><a href=\"#\" data-nav-key=\"retail-interactive\" data-dom-id=\"nav-retail-interactive\" class=\"min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[var(--lm-muted-foreground)]\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"w-5 h-5\"><path d=\"M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z\"></path></svg><span class=\"text-[11px] leading-none\">交互服务</span></a><a href=\"#\" data-nav-key=\"retail-analytics\" data-dom-id=\"nav-retail-analytics\" class=\"min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[var(--lm-muted-foreground)]\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"w-5 h-5\"><line x1=\"18\" y1=\"20\" x2=\"18\" y2=\"10\"></line><line x1=\"12\" y1=\"20\" x2=\"12\" y2=\"4\"></line><line x1=\"6\" y1=\"20\" x2=\"6\" y2=\"14\"></line></svg><span class=\"text-[11px] leading-none\">经营分析</span></a><a href=\"#\" data-nav-key=\"retail-policy\" data-dom-id=\"nav-retail-policy\" class=\"min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[var(--lm-muted-foreground)]\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"w-5 h-5\"><path d=\"M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z\"></path><path d=\"M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z\"></path></svg><span class=\"text-[11px] leading-none\">政策教学</span></a></div></nav>",
+            "retail-interactive": "<nav data-mobile-nav=\"global\" class=\"w-full bg-white border-t border-[var(--lm-border)]\"><div class=\"w-full max-w-md mx-auto grid grid-cols-4 h-16\"><a href=\"#\" data-nav-key=\"retail-basic\" data-dom-id=\"nav-retail-basic\" class=\"min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[var(--lm-muted-foreground)]\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"w-5 h-5\"><path d=\"M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"></path><polyline points=\"9 22 9 12 15 12 15 22\"></polyline></svg><span class=\"text-[11px] leading-none\">基础服务</span></a><a href=\"#\" data-nav-key=\"retail-interactive\" data-dom-id=\"nav-retail-interactive\" class=\"min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[var(--lm-primary)] font-medium\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"w-5 h-5\"><path d=\"M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z\"></path></svg><span class=\"text-[11px] leading-none\">交互服务</span></a><a href=\"#\" data-nav-key=\"retail-analytics\" data-dom-id=\"nav-retail-analytics\" class=\"min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[var(--lm-muted-foreground)]\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"w-5 h-5\"><line x1=\"18\" y1=\"20\" x2=\"18\" y2=\"10\"></line><line x1=\"12\" y1=\"20\" x2=\"12\" y2=\"4\"></line><line x1=\"6\" y1=\"20\" x2=\"6\" y2=\"14\"></line></svg><span class=\"text-[11px] leading-none\">经营分析</span></a><a href=\"#\" data-nav-key=\"retail-policy\" data-dom-id=\"nav-retail-policy\" class=\"min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[var(--lm-muted-foreground)]\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"w-5 h-5\"><path d=\"M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z\"></path><path d=\"M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z\"></path></svg><span class=\"text-[11px] leading-none\">政策教学</span></a></div></nav>",
+            "retail-analytics": "<nav data-mobile-nav=\"global\" class=\"w-full bg-white border-t border-[var(--lm-border)]\"><div class=\"w-full max-w-md mx-auto grid grid-cols-4 h-16\"><a href=\"#\" data-nav-key=\"retail-basic\" data-dom-id=\"nav-retail-basic\" class=\"min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[var(--lm-muted-foreground)]\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"w-5 h-5\"><path d=\"M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"></path><polyline points=\"9 22 9 12 15 12 15 22\"></polyline></svg><span class=\"text-[11px] leading-none\">基础服务</span></a><a href=\"#\" data-nav-key=\"retail-interactive\" data-dom-id=\"nav-retail-interactive\" class=\"min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[var(--lm-muted-foreground)]\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"w-5 h-5\"><path d=\"M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z\"></path></svg><span class=\"text-[11px] leading-none\">交互服务</span></a><a href=\"#\" data-nav-key=\"retail-analytics\" data-dom-id=\"nav-retail-analytics\" class=\"min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[var(--lm-primary)] font-medium\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"w-5 h-5\"><line x1=\"18\" y1=\"20\" x2=\"18\" y2=\"10\"></line><line x1=\"12\" y1=\"20\" x2=\"12\" y2=\"4\"></line><line x1=\"6\" y1=\"20\" x2=\"6\" y2=\"14\"></line></svg><span class=\"text-[11px] leading-none\">经营分析</span></a><a href=\"#\" data-nav-key=\"retail-policy\" data-dom-id=\"nav-retail-policy\" class=\"min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[var(--lm-muted-foreground)]\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"w-5 h-5\"><path d=\"M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z\"></path><path d=\"M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z\"></path></svg><span class=\"text-[11px] leading-none\">政策教学</span></a></div></nav>",
+            "retail-policy": "<nav data-mobile-nav=\"global\" class=\"w-full bg-white border-t border-[var(--lm-border)]\"><div class=\"w-full max-w-md mx-auto grid grid-cols-4 h-16\"><a href=\"#\" data-nav-key=\"retail-basic\" data-dom-id=\"nav-retail-basic\" class=\"min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[var(--lm-muted-foreground)]\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"w-5 h-5\"><path d=\"M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"></path><polyline points=\"9 22 9 12 15 12 15 22\"></polyline></svg><span class=\"text-[11px] leading-none\">基础服务</span></a><a href=\"#\" data-nav-key=\"retail-interactive\" data-dom-id=\"nav-retail-interactive\" class=\"min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[var(--lm-muted-foreground)]\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"w-5 h-5\"><path d=\"M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z\"></path></svg><span class=\"text-[11px] leading-none\">交互服务</span></a><a href=\"#\" data-nav-key=\"retail-analytics\" data-dom-id=\"nav-retail-analytics\" class=\"min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[var(--lm-muted-foreground)]\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"w-5 h-5\"><line x1=\"18\" y1=\"20\" x2=\"18\" y2=\"10\"></line><line x1=\"12\" y1=\"20\" x2=\"12\" y2=\"4\"></line><line x1=\"6\" y1=\"20\" x2=\"6\" y2=\"14\"></line></svg><span class=\"text-[11px] leading-none\">经营分析</span></a><a href=\"#\" data-nav-key=\"retail-policy\" data-dom-id=\"nav-retail-policy\" class=\"min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[var(--lm-primary)] font-medium\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"w-5 h-5\"><path d=\"M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z\"></path><path d=\"M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z\"></path></svg><span class=\"text-[11px] leading-none\">政策教学</span></a></div></nav>",
+            "consumer-public": "<nav data-mobile-nav=\"global\" class=\"w-full bg-white border-t border-[var(--lm-border)]\"><div class=\"w-full max-w-md mx-auto grid grid-cols-3 h-16\"><a href=\"#\" data-nav-key=\"consumer-public\" data-dom-id=\"nav-consumer-public\" class=\"min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[var(--lm-primary)] font-medium\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"w-5 h-5\"><path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\"></path></svg><span class=\"text-[11px] leading-none\">公开信息</span></a><a href=\"#\" data-nav-key=\"consumer-supervision\" data-dom-id=\"nav-consumer-supervision\" class=\"min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[var(--lm-muted-foreground)]\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"w-5 h-5\"><path d=\"M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z\"></path><line x1=\"4\" y1=\"22\" x2=\"4\" y2=\"15\"></line></svg><span class=\"text-[11px] leading-none\">监督反馈</span></a><a href=\"#\" data-nav-key=\"consumer-insights\" data-dom-id=\"nav-consumer-insights\" class=\"min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[var(--lm-muted-foreground)]\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"w-5 h-5\"><path d=\"M21.21 15.89A10 10 0 1 1 8 2.83\"></path><path d=\"M22 12A10 10 0 0 0 12 2v10z\"></path></svg><span class=\"text-[11px] leading-none\">消费洞察</span></a></div></nav>",
+            "consumer-supervision": "<nav data-mobile-nav=\"global\" class=\"w-full bg-white border-t border-[var(--lm-border)]\"><div class=\"w-full max-w-md mx-auto grid grid-cols-3 h-16\"><a href=\"#\" data-nav-key=\"consumer-public\" data-dom-id=\"nav-consumer-public\" class=\"min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[var(--lm-muted-foreground)]\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"w-5 h-5\"><path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\"></path></svg><span class=\"text-[11px] leading-none\">公开信息</span></a><a href=\"#\" data-nav-key=\"consumer-supervision\" data-dom-id=\"nav-consumer-supervision\" class=\"min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[var(--lm-primary)] font-medium\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"w-5 h-5\"><path d=\"M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z\"></path><line x1=\"4\" y1=\"22\" x2=\"4\" y2=\"15\"></line></svg><span class=\"text-[11px] leading-none\">监督反馈</span></a><a href=\"#\" data-nav-key=\"consumer-insights\" data-dom-id=\"nav-consumer-insights\" class=\"min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[var(--lm-muted-foreground)]\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"w-5 h-5\"><path d=\"M21.21 15.89A10 10 0 1 1 8 2.83\"></path><path d=\"M22 12A10 10 0 0 0 12 2v10z\"></path></svg><span class=\"text-[11px] leading-none\">消费洞察</span></a></div></nav>",
+            "consumer-insights": "<nav data-mobile-nav=\"global\" class=\"w-full bg-white border-t border-[var(--lm-border)]\"><div class=\"w-full max-w-md mx-auto grid grid-cols-3 h-16\"><a href=\"#\" data-nav-key=\"consumer-public\" data-dom-id=\"nav-consumer-public\" class=\"min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[var(--lm-muted-foreground)]\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"w-5 h-5\"><path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\"></path></svg><span class=\"text-[11px] leading-none\">公开信息</span></a><a href=\"#\" data-nav-key=\"consumer-supervision\" data-dom-id=\"nav-consumer-supervision\" class=\"min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[var(--lm-muted-foreground)]\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"w-5 h-5\"><path d=\"M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z\"></path><line x1=\"4\" y1=\"22\" x2=\"4\" y2=\"15\"></line></svg><span class=\"text-[11px] leading-none\">监督反馈</span></a><a href=\"#\" data-nav-key=\"consumer-insights\" data-dom-id=\"nav-consumer-insights\" class=\"min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[var(--lm-primary)] font-medium\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"w-5 h-5\"><path d=\"M21.21 15.89A10 10 0 1 1 8 2.83\"></path><path d=\"M22 12A10 10 0 0 0 12 2v10z\"></path></svg><span class=\"text-[11px] leading-none\">消费洞察</span></a></div></nav>"
+          }
+        }
+      }
+    },
+    "cssPreflightEvidence": {
+      "command": "node apply-html-head-contract.mjs ... --prefix=lm",
+      "exitCode": 0,
+      "output": "HTML skeleton generated",
+      "preflightHtmlPath": ".preflight/preflight.html"
+    },
+    "styleContinuityAnchors": {
+      "colorSystem": "品牌主色 #2563eb（蓝色），中性色阶 #ffffff→#0f172a，状态色：成功 #10b981、警告 #f59e0b、错误 #ef4444、信息 #3b82f6。背景 #f8fafc 浅灰，卡片白底",
+      "shapeSystem": "圆角：sm 4px、md 8px、lg 12px、xl 16px、full 9999px。卡片使用 lg 圆角，按钮使用 md/lg 圆角，标签使用 full 圆角",
+      "typographySystem": "字体：Inter + Noto Sans SC + PingFang SC。字号：xs 12px、sm 13px、base 15px、lg 17px、xl 20px、2xl 24px、3xl 30px",
+      "spacingSystem": "间距：4/8/12/16/20/24/32/40px。页面边距 16px，模块间距 20px，卡片内边距 16px",
+      "componentLanguage": "黄色左边框 section 标签 + 灰色背景标题；白底圆角卡片 + 细边框 + 轻阴影；分段控制器 tab 切换；底部固定 tab 导航（3列或4列网格）；Lucide 图标",
+      "surfaceAndDepth": "白底卡片浮于浅灰背景之上，使用 shadow-1 轻阴影和 border 细边框营造层次感，避免重阴影和渐变",
+      "imageryAndIconography": "使用 Lucide 线性图标，24px 默认尺寸，1.5px 描边。SVG 内联，无图片素材依赖",
+      "interactionTone": "政务服务风格，简洁大方，无花哨动画。点击反馈通过颜色变化体现，tab 切换通过背景色区分激活状态"
+    },
+    "dispatchPreflightManifest": [
+      {
+        "nodeId": "page-supervision-feedback-v2",
+        "packetType": "ExistingEditPagePacket",
+        "sourcePageId": "page-supervision-feedback",
+        "sourceHtmlSrc": "pages/supervision-feedback.html",
+        "derivationType": "comparison-page",
+        "inPlaceEditAllowed": false,
+        "toolPolicy": {
+          "todoWriteAllowed": false,
+          "validationScriptsAllowed": false,
+          "previewAllowed": false,
+          "helperScriptsAllowed": false,
+          "designFileWriteAllowed": false,
+          "allowedWritePaths": ["pages/supervision-feedback-v2.html"]
+        }
+      }
+    ],
+    "expectedDispatches": [
+      {
+        "nodeId": "page-supervision-feedback-v2",
+        "packetType": "ExistingEditPagePacket",
+        "status": "completed",
+        "changedFiles": ["pages/supervision-feedback-v2.html"],
+        "toolCallLedger": {"todoWriteCalls": 0, "previewCalls": 0, "validationScriptCalls": 0, "helperScriptWrites": 0}
+      }
+    ]
+  },
+  "designSource": {
+    "operatingMode": "free-explore",
+    "cssFilePath": "colors_and_type.css",
+    "brandPrefix": "lm",
+    "styleConstraints": {
+      "radiusMax": 16,
+      "staticShadowAlphaMax": 0.05,
+      "singleBrandHue": true,
+      "noSecondaryAccent": true
+    }
+  },
+  "pages": [
+    {
+      "nodeId": "page-entry",
+      "htmlSrc": "pages/entry.html",
+      "title": "入口选择",
+      "pageIndex": 1,
+      "pageType": "showcase",
+      "viewportMode": "document-scroll",
+      "mobileNavigationActiveKey": "none",
+      "visualNorthStar": "双入口门户：顶部品牌标题 + 两张大卡片分别进入零售户端与消费者端，卡片使用品牌图标 + 标题 + 一句话说明，简洁有力",
+      "compositionPattern": "垂直堆叠的双入口卡片布局，首屏居中品牌标题，下方两张等宽卡片带图标和箭头，营造清晰的选择入口",
+      "continuityAnchors": [
+        "共享顶部标题栏：蓝色品牌标题 + 副标题，居中显示",
+        "共享卡片语言：白底圆角卡片、细边框、左侧图标、右侧说明 + 箭头"
+      ],
+      "componentPlan": ["brand-header", "entry-card", "icon-marker"],
+      "imagePlan": [],
+      "chartsRequired": false,
+      "miniProgramStyle": false
+    },
+    {
+      "nodeId": "page-basic-services",
+      "htmlSrc": "pages/basic-services.html",
+      "title": "基础服务",
+      "pageIndex": 2,
+      "pageType": "information-dense",
+      "viewportMode": "document-scroll",
+      "mobileNavigationActiveKey": "retail-basic",
+      "visualNorthStar": "零售户基础信息聚合页：客户档案卡片、商品搜索、历史订单列表、结算信息，使用黄色边框 section 标签区分模块",
+      "compositionPattern": "模块卡片垂直堆叠，每个模块顶部有黄色边框 section 标签，内容使用白底卡片承载，底部配零售户 tab 导航",
+      "continuityAnchors": [
+        "共享顶部标题栏：'客户服务码系统' + '零售户专属服务平台' 副标题",
+        "共享模块标签：黄色左侧边框 + 灰色背景的 section 标题标签"
+      ],
+      "componentPlan": ["section-label", "info-card", "search-bar", "order-list-item", "bottom-tab-nav"],
+      "imagePlan": [],
+      "chartsRequired": false,
+      "miniProgramStyle": false
+    },
+    {
+      "nodeId": "page-interactive-services",
+      "htmlSrc": "pages/interactive-services.html",
+      "title": "交互服务",
+      "pageIndex": 3,
+      "pageType": "task-driven",
+      "viewportMode": "document-scroll",
+      "mobileNavigationActiveKey": "retail-interactive",
+      "visualNorthStar": "意见举报与问卷页：分段控制器切换意见建议/问题举报，表单区，签约与问卷入口，反馈处理进度时间线",
+      "compositionPattern": "顶部切换 tab + 表单卡片 + 问卷列表 + 进度列表，使用蓝色主按钮和绿色次按钮",
+      "continuityAnchors": [
+        "共享顶部标题栏与模块标签样式",
+        "共享零售户底部 tab 导航"
+      ],
+      "componentPlan": ["segmented-control", "feedback-form", "questionnaire-card", "progress-timeline", "bottom-tab-nav"],
+      "imagePlan": [],
+      "chartsRequired": false,
+      "miniProgramStyle": false
+    },
+    {
+      "nodeId": "page-business-analytics",
+      "htmlSrc": "pages/business-analytics.html",
+      "title": "经营分析",
+      "pageIndex": 4,
+      "pageType": "information-dense",
+      "viewportMode": "document-scroll",
+      "mobileNavigationActiveKey": "retail-analytics",
+      "visualNorthStar": "数据赋能经营页：四宫格 KPI 指标、销售趋势折线图、库存预警列表、货源推荐卡片、信用等级环形图",
+      "compositionPattern": "KPI 指标网格 + 趋势图表卡片 + 预警列表 + 推荐卡片 + 信用评估，使用图表增强数据感",
+      "continuityAnchors": [
+        "共享顶部标题栏与模块标签样式",
+        "共享零售户底部 tab 导航"
+      ],
+      "componentPlan": ["kpi-grid", "line-chart", "warning-list-item", "recommendation-card", "donut-chart", "bottom-tab-nav"],
+      "imagePlan": [],
+      "chartsRequired": true,
+      "miniProgramStyle": false
+    },
+    {
+      "nodeId": "page-policy-learning",
+      "htmlSrc": "pages/policy-learning.html",
+      "title": "政策教学",
+      "pageIndex": 5,
+      "pageType": "information-dense",
+      "viewportMode": "document-scroll",
+      "mobileNavigationActiveKey": "retail-policy",
+      "visualNorthStar": "政策资源整合页：顶部搜索框、政策信息列表、现代终端建设 CTA、终端操作教学视频列表、快速导航标签云",
+      "compositionPattern": "搜索栏 + 信息列表 + 功能卡片 + 视频列表 + 标签网格，底部零售户 tab 导航",
+      "continuityAnchors": [
+        "共享顶部标题栏与模块标签样式",
+        "共享零售户底部 tab 导航"
+      ],
+      "componentPlan": ["search-bar", "policy-list-item", "cta-card", "video-list-item", "tag-grid", "bottom-tab-nav"],
+      "imagePlan": [],
+      "chartsRequired": false,
+      "miniProgramStyle": false
+    },
+    {
+      "nodeId": "page-public-info",
+      "htmlSrc": "pages/public-info.html",
+      "title": "公开信息",
+      "pageIndex": 6,
+      "pageType": "information-dense",
+      "viewportMode": "document-scroll",
+      "mobileNavigationActiveKey": "consumer-public",
+      "visualNorthStar": "消费者公开信息页：零售户信用公示列表（等级、评分、距离）、卷烟信息搜索、商品列表及价格",
+      "compositionPattern": "零售户卡片列表 + 商品搜索 + 商品列表，使用星级评分和距离标签，底部消费者 tab 导航",
+      "continuityAnchors": [
+        "共享顶部标题栏：'消费者监督码系统' + '消费者信息查询与监督平台' 副标题",
+        "共享消费者底部 tab 导航"
+      ],
+      "componentPlan": ["retailer-card", "star-rating", "search-bar", "product-list-item", "bottom-tab-nav"],
+      "imagePlan": [],
+      "chartsRequired": false,
+      "miniProgramStyle": false
+    },
+    {
+      "nodeId": "page-supervision-feedback",
+      "htmlSrc": "pages/supervision-feedback.html",
+      "title": "监督反馈",
+      "pageIndex": 7,
+      "pageType": "task-driven",
+      "viewportMode": "document-scroll",
+      "mobileNavigationActiveKey": "consumer-supervision",
+      "visualNorthStar": "消费者监督反馈页：服务评价/投诉监督切换、评分+表单、消费问卷卡片、我的评价记录列表",
+      "compositionPattern": "分段控制器 + 评价表单 + 问卷卡片 + 记录列表，底部消费者 tab 导航",
+      "continuityAnchors": [
+        "共享消费者顶部标题栏",
+        "共享消费者底部 tab 导航"
+      ],
+      "componentPlan": ["segmented-control", "star-rating", "feedback-form", "questionnaire-card", "record-list-item", "bottom-tab-nav"],
+      "imagePlan": [],
+      "chartsRequired": false,
+      "miniProgramStyle": false
+    },
+    {
+      "nodeId": "page-supervision-feedback-v2",
+      "htmlSrc": "pages/supervision-feedback-v2.html",
+      "title": "监督反馈 - 找口粮版",
+      "pageIndex": 9,
+      "pageType": "task-driven",
+      "viewportMode": "document-scroll",
+      "mobileNavigationActiveKey": "consumer-supervision",
+      "derivationType": "comparison-from-source",
+      "sourcePageId": "page-supervision-feedback",
+      "sourceHtmlSrc": "pages/supervision-feedback.html",
+      "visualNorthStar": "消费者监督反馈增强版：找口粮搜索 + 服务评价/投诉监督切换 + 浮动客服按钮",
+      "compositionPattern": "找口粮搜索卡片 + 分段控制器 + 评价表单 + 投诉表单 + 问卷卡片 + 记录列表 + 浮动客服按钮，底部消费者 tab 导航",
+      "continuityAnchors": [
+        "共享消费者顶部标题栏",
+        "共享消费者底部 tab 导航",
+        "共享黄色边框 section 标签样式",
+        "共享白底圆角卡片组件语言"
+      ],
+      "componentPlan": ["search-bar", "store-card", "segmented-control", "star-rating", "feedback-form", "complaint-form", "questionnaire-card", "record-list-item", "floating-button", "bottom-tab-nav"],
+      "imagePlan": [],
+      "chartsRequired": false,
+      "miniProgramStyle": false
+    },
+    {
+      "nodeId": "page-consumer-insights",
+      "htmlSrc": "pages/consumer-insights.html",
+      "title": "消费洞察",
+      "pageIndex": 8,
+      "pageType": "information-dense",
+      "viewportMode": "document-scroll",
+      "mobileNavigationActiveKey": "consumer-insights",
+      "visualNorthStar": "消费洞察页：消费档次环形图、购买时间分布环形图、消费画像 KPI 卡片、基于偏好的推荐卡片",
+      "compositionPattern": "双环形图 + 画像 KPI 网格 + 推荐卡片，底部消费者 tab 导航",
+      "continuityAnchors": [
+        "共享消费者顶部标题栏",
+        "共享消费者底部 tab 导航"
+      ],
+      "componentPlan": ["donut-chart", "kpi-grid", "recommendation-card", "bottom-tab-nav"],
+      "imagePlan": [],
+      "chartsRequired": true,
+      "miniProgramStyle": false
+    }
+  ],
+  "assets": [],
+  "wiringPlan": [],
+  "hiddenInteractionPlan": []
+}

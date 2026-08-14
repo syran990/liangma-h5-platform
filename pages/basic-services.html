@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>基础服务</title>
+<style id="theme-vars">
+:root {
+  --lm-primary-50:#eff6ff;--lm-primary-100:#dbeafe;--lm-primary-200:#bfdbfe;--lm-primary-300:#93c5fd;--lm-primary-400:#60a5fa;--lm-primary-500:#3b82f6;--lm-primary-600:#2563eb;--lm-primary-700:#1d4ed8;--lm-primary-800:#1e40af;--lm-primary-900:#1e3a8a;
+  --lm-neutral-0:#ffffff;--lm-neutral-50:#f8fafc;--lm-neutral-100:#f1f5f9;--lm-neutral-200:#e2e8f0;--lm-neutral-300:#cbd5e1;--lm-neutral-400:#94a3b8;--lm-neutral-500:#64748b;--lm-neutral-600:#475569;--lm-neutral-700:#334155;--lm-neutral-800:#1e293b;--lm-neutral-900:#2563eb;
+  --lm-background:#f8fafc;--lm-foreground:#1e293b;--lm-card:#ffffff;--lm-card-foreground:#1e293b;--lm-popover:#ffffff;--lm-popover-foreground:#1e293b;--lm-primary:#2563eb;--lm-primary-foreground:#ffffff;--lm-muted:#f1f5f9;--lm-muted-foreground:#64748b;--lm-border:#e2e8f0;--lm-input:#e2e8f0;--lm-ring:#3b82f6;
+  --lm-state-success:#10b981;--lm-state-success-bg:#ecfdf5;--lm-state-warning:#f59e0b;--lm-state-warning-bg:#fffbeb;--lm-state-error:#ef4444;--lm-state-error-bg:#fef2f2;--lm-state-info:#3b82f6;--lm-state-info-bg:#eff6ff;
+  --lm-radius-sm:4px;--lm-radius-md:8px;--lm-radius-lg:12px;--lm-radius-xl:16px;--lm-radius-full:9999px;
+  --lm-shadow-1:0 1px 2px rgba(15,23,42,0.05),0 1px 1px rgba(15,23,42,0.03);--lm-shadow-2:0 4px 12px -4px rgba(15,23,42,0.1);--lm-shadow-3:0 16px 40px -12px rgba(15,23,42,0.18);
+  --lm-space-1:4px;--lm-space-2:8px;--lm-space-3:12px;--lm-space-4:16px;--lm-space-5:20px;--lm-space-6:24px;--lm-space-7:32px;--lm-space-8:40px;
+  --lm-font-sans:Inter,"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --lm-font-mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --lm-text-xs:12px;--lm-text-sm:13px;--lm-text-base:15px;--lm-text-lg:17px;--lm-text-xl:20px;--lm-text-2xl:24px;--lm-text-3xl:30px;
+}
+.dark{--lm-background:#0f172a;--lm-foreground:#f8fafc;--lm-card:#1e293b;--lm-card-foreground:#f8fafc;--lm-popover:#1e293b;--lm-popover-foreground:#f8fafc;--lm-primary:#60a5fa;--lm-primary-foreground:#0f172a;--lm-muted:#334155;--lm-muted-foreground:#94a3b8;--lm-border:#334155;--lm-input:#334155;--lm-ring:#60a5fa;}
+:root{--color-background:var(--lm-background);--color-foreground:var(--lm-foreground);--color-card:var(--lm-card);--color-card-foreground:var(--lm-card-foreground);--color-popover:var(--lm-popover);--color-popover-foreground:var(--lm-popover-foreground);--color-primary:var(--lm-primary);--color-primary-foreground:var(--lm-primary-foreground);--color-muted:var(--lm-muted);--color-muted-foreground:var(--lm-muted-foreground);--color-border:var(--lm-border);--color-input:var(--lm-input);--color-ring:var(--lm-ring);--radius-sm:var(--lm-radius-sm);--radius-md:var(--lm-radius-md);--radius-lg:var(--lm-radius-lg);--radius-xl:var(--lm-radius-xl);--radius-full:var(--lm-radius-full);}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.1/dist/index.global.js"></script>
+<script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+<style type="text/tailwindcss">
+@theme inline {
+  --color-background:var(--lm-background);--color-foreground:var(--lm-foreground);--color-card:var(--lm-card);--color-card-foreground:var(--lm-card-foreground);--color-popover:var(--lm-popover);--color-popover-foreground:var(--lm-popover-foreground);--color-primary:var(--lm-primary);--color-primary-foreground:var(--lm-primary-foreground);--color-muted:var(--lm-muted);--color-muted-foreground:var(--lm-muted-foreground);--color-border:var(--lm-border);--color-input:var(--lm-input);--color-ring:var(--lm-ring);--radius-sm:var(--lm-radius-sm);--radius-md:var(--lm-radius-md);--radius-lg:var(--lm-radius-lg);--radius-xl:var(--lm-radius-xl);
+}
+@layer base { body{background:var(--lm-background);color:var(--lm-foreground);font-family:var(--lm-font-sans);-webkit-font-smoothing:antialiased;} }
+</style>
+<style>
+.no-scrollbar::-webkit-scrollbar{display:none;}
+.no-scrollbar{-ms-overflow-style:none;scrollbar-width:none;}
+.safe-area-pb{padding-bottom:max(12px,env(safe-area-inset-bottom));}
+</style>
+</head>
+<body class="min-h-screen bg-[var(--lm-background)] text-[var(--lm-foreground)] flex flex-col">
+  <div class="flex-1 w-full max-w-md mx-auto pb-4">
+    
+<header class="bg-[#2563eb] text-white pt-safe-top">
+  <div class="max-w-md mx-auto px-4 py-5 text-center">
+    <h1 class="text-xl font-semibold tracking-tight">客户服务码系统</h1>
+    <p class="text-sm text-white/80 mt-1">零售户专属服务平台</p>
+  </div>
+</header><main class="px-4 py-4 space-y-5">
+  <div class="flex items-center gap-2 mb-3">
+    <div class="pl-2 py-1 border-l-4 border-yellow-400 bg-[var(--lm-muted)] rounded-r-md">
+      <span class="text-sm font-semibold text-[var(--lm-foreground)]">客户基础信息</span>
+    </div>
+  </div><div class="bg-white rounded-xl border border-[var(--lm-border)] shadow-[var(--lm-shadow-1)] p-4 ">
+  <div class="flex items-start justify-between">
+    <div>
+      <p class="text-base font-semibold">峨山县张三便利店</p>
+      <p class="text-sm text-[var(--lm-muted-foreground)] mt-0.5">530426191000</p>
+      <p class="text-sm mt-1">负责人：张三</p>
+      <div class="flex flex-wrap gap-2 mt-3">
+        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs bg-[var(--lm-primary-50)] text-[var(--lm-primary)] font-medium">8档</span>
+        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs bg-[var(--lm-state-success-bg)] text-[var(--lm-state-success)]">一般现代终端</span>
+        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs bg-[var(--lm-state-warning-bg)] text-[var(--lm-state-warning)]">便利店</span>
+        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs bg-[var(--lm-state-info-bg)] text-[var(--lm-state-info)]">农网</span>
+      </div>
+    </div>
+    <a href="tel:13800001234" class="flex flex-col items-center text-[var(--lm-primary)] text-xs"><div class="w-10 h-10 rounded-full bg-[var(--lm-primary-50)] flex items-center justify-center mb-1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>联系客户经理</a>
+  </div>
+  <div class="grid grid-cols-2 gap-3 mt-4 pt-4 border-t border-[var(--lm-border)] text-sm">
+    <div><span class="text-[var(--lm-muted-foreground)]">订货日程：</span>周二</div>
+    <div><span class="text-[var(--lm-muted-foreground)]">许可证有效期：</span>2028-06-30</div>
+  </div>
+</div>
+  <div class="flex items-center gap-2 mb-3">
+    <div class="pl-2 py-1 border-l-4 border-yellow-400 bg-[var(--lm-muted)] rounded-r-md">
+      <span class="text-sm font-semibold text-[var(--lm-foreground)]">历史订单</span>
+    </div>
+  </div><div class="bg-white rounded-xl border border-[var(--lm-border)] shadow-[var(--lm-shadow-1)] p-4 ">
+  <!-- 时间筛选 -->
+  <div class="flex items-center justify-between mb-4">
+    <div class="flex items-center gap-2">
+      <span class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-[var(--lm-state-warning-bg)] text-[var(--lm-foreground)]">历史订单</span>
+      <span class="text-xs text-[var(--lm-muted-foreground)]">预览</span>
+    </div>
+    <div class="relative">
+      <div class="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-[var(--lm-muted)] text-xs text-[var(--lm-muted-foreground)] cursor-pointer" id="period-dropdown-btn">
+        <span id="period-label">近一个月</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div id="period-dropdown-menu" class="hidden absolute top-full right-0 mt-1 bg-white rounded-lg shadow-[var(--lm-shadow-2)] border border-[var(--lm-border)] py-1 z-20 w-28">
+        <button data-period="1m" class="block w-full text-left px-3 py-2 text-xs hover:bg-[var(--lm-muted)] period-option">近一个月</button>
+        <button data-period="3m" class="block w-full text-left px-3 py-2 text-xs hover:bg-[var(--lm-muted)] period-option">近三个月</button>
+      </div>
+    </div>
+  </div>
+  <!-- 订单列表 -->
+  <div id="orders-1m" class="space-y-0">
+    <!-- 最近一笔订单（带操作按钮） -->
+    <div class="py-3 border-b border-[var(--lm-border)]">
+      <div class="flex items-start justify-between">
+        <div>
+          <p class="text-sm font-semibold text-[var(--lm-foreground)]">2026-04-27</p>
+          <p class="text-xs text-[var(--lm-muted-foreground)] mt-0.5">共 12 个品规</p>
+        </div>
+        <div class="text-right">
+          <p class="text-sm font-bold text-[var(--lm-foreground)]">¥8,640</p>
+          <p class="text-xs text-[var(--lm-state-warning)] mt-0.5">配送中</p>
+        </div>
+      </div>
+      <div class="flex gap-2 mt-2.5">
+        <button class="flex-1 py-1.5 text-xs rounded-lg border border-[var(--lm-primary)] text-[var(--lm-primary)] font-medium hover:bg-[var(--lm-primary-50)]">我要换货</button>
+        <button class="flex-1 py-1.5 text-xs rounded-lg bg-[var(--lm-primary)] text-white font-medium hover:bg-[var(--lm-primary-700)] flex items-center justify-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>送货进度</button>
+      </div>
+    </div>
+    <div class="py-3 border-b border-[var(--lm-border)]">
+      <div class="flex items-start justify-between">
+        <div>
+          <p class="text-sm font-semibold text-[var(--lm-foreground)]">2026-04-21</p>
+          <p class="text-xs text-[var(--lm-muted-foreground)] mt-0.5">共 10 个品规</p>
+        </div>
+        <div class="text-right">
+          <p class="text-sm font-bold text-[var(--lm-foreground)]">¥7,200</p>
+          <p class="text-xs text-[var(--lm-state-success)] mt-0.5">已签收</p>
+        </div>
+      </div>
+    </div>
+    <div class="py-3 border-b border-[var(--lm-border)]">
+      <div class="flex items-start justify-between">
+        <div>
+          <p class="text-sm font-semibold text-[var(--lm-foreground)]">2026-04-14</p>
+          <p class="text-xs text-[var(--lm-muted-foreground)] mt-0.5">共 11 个品规</p>
+        </div>
+        <div class="text-right">
+          <p class="text-sm font-bold text-[var(--lm-foreground)]">¥7,680</p>
+          <p class="text-xs text-[var(--lm-state-success)] mt-0.5">已签收</p>
+        </div>
+      </div>
+    </div>
+    <div class="py-3">
+      <div class="flex items-start justify-between">
+        <div>
+          <p class="text-sm font-semibold text-[var(--lm-foreground)]">2026-04-07</p>
+          <p class="text-xs text-[var(--lm-muted-foreground)] mt-0.5">共 9 个品规</p>
+        </div>
+        <div class="text-right">
+          <p class="text-sm font-bold text-[var(--lm-foreground)]">¥6,480</p>
+          <p class="text-xs text-[var(--lm-state-success)] mt-0.5">已签收</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 近三个月订单（默认隐藏） -->
+  <div id="orders-3m" class="hidden space-y-0">
+    <div class="py-3 border-b border-[var(--lm-border)]">
+      <div class="flex items-start justify-between">
+        <div>
+          <p class="text-sm font-semibold text-[var(--lm-foreground)]">2026-04-27</p>
+          <p class="text-xs text-[var(--lm-muted-foreground)] mt-0.5">共 12 个品规</p>
+        </div>
+        <div class="text-right">
+          <p class="text-sm font-bold text-[var(--lm-foreground)]">¥8,640</p>
+          <p class="text-xs text-[var(--lm-state-warning)] mt-0.5">配送中</p>
+        </div>
+      </div>
+      <div class="flex gap-2 mt-2.5">
+        <button class="flex-1 py-1.5 text-xs rounded-lg border border-[var(--lm-primary)] text-[var(--lm-primary)] font-medium hover:bg-[var(--lm-primary-50)]">我要换货</button>
+        <button class="flex-1 py-1.5 text-xs rounded-lg bg-[var(--lm-primary)] text-white font-medium hover:bg-[var(--lm-primary-700)] flex items-center justify-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>送货进度</button>
+      </div>
+    </div>
+    <div class="py-3 border-b border-[var(--lm-border)]">
+      <div class="flex items-start justify-between">
+        <div>
+          <p class="text-sm font-semibold text-[var(--lm-foreground)]">2026-04-21</p>
+          <p class="text-xs text-[var(--lm-muted-foreground)] mt-0.5">共 10 个品规</p>
+        </div>
+        <div class="text-right">
+          <p class="text-sm font-bold text-[var(--lm-foreground)]">¥7,200</p>
+          <p class="text-xs text-[var(--lm-state-success)] mt-0.5">已签收</p>
+        </div>
+      </div>
+    </div>
+    <div class="py-3 border-b border-[var(--lm-border)]">
+      <div class="flex items-start justify-between">
+        <div>
+          <p class="text-sm font-semibold text-[var(--lm-foreground)]">2026-04-14</p>
+          <p class="text-xs text-[var(--lm-muted-foreground)] mt-0.5">共 11 个品规</p>
+        </div>
+        <div class="text-right">
+          <p class="text-sm font-bold text-[var(--lm-foreground)]">¥7,680</p>
+          <p class="text-xs text-[var(--lm-state-success)] mt-0.5">已签收</p>
+        </div>
+      </div>
+    </div>
+    <div class="py-3 border-b border-[var(--lm-border)]">
+      <div class="flex items-start justify-between">
+        <div>
+          <p class="text-sm font-semibold text-[var(--lm-foreground)]">2026-04-07</p>
+          <p class="text-xs text-[var(--lm-muted-foreground)] mt-0.5">共 9 个品规</p>
+        </div>
+        <div class="text-right">
+          <p class="text-sm font-bold text-[var(--lm-foreground)]">¥6,480</p>
+          <p class="text-xs text-[var(--lm-state-success)] mt-0.5">已签收</p>
+        </div>
+      </div>
+    </div>
+    <div class="py-3 border-b border-[var(--lm-border)]">
+      <div class="flex items-start justify-between">
+        <div>
+          <p class="text-sm font-semibold text-[var(--lm-foreground)]">2026-03-31</p>
+          <p class="text-xs text-[var(--lm-muted-foreground)] mt-0.5">共 14 个品规</p>
+        </div>
+        <div class="text-right">
+          <p class="text-sm font-bold text-[var(--lm-foreground)]">¥9,120</p>
+          <p class="text-xs text-[var(--lm-state-success)] mt-0.5">已签收</p>
+        </div>
+      </div>
+    </div>
+    <div class="py-3 border-b border-[var(--lm-border)]">
+      <div class="flex items-start justify-between">
+        <div>
+          <p class="text-sm font-semibold text-[var(--lm-foreground)]">2026-03-24</p>
+          <p class="text-xs text-[var(--lm-muted-foreground)] mt-0.5">共 8 个品规</p>
+        </div>
+        <div class="text-right">
+          <p class="text-sm font-bold text-[var(--lm-foreground)]">¥5,760</p>
+          <p class="text-xs text-[var(--lm-state-success)] mt-0.5">已签收</p>
+        </div>
+      </div>
+    </div>
+    <div class="py-3 border-b border-[var(--lm-border)]">
+      <div class="flex items-start justify-between">
+        <div>
+          <p class="text-sm font-semibold text-[var(--lm-foreground)]">2026-03-17</p>
+          <p class="text-xs text-[var(--lm-muted-foreground)] mt-0.5">共 13 个品规</p>
+        </div>
+        <div class="text-right">
+          <p class="text-sm font-bold text-[var(--lm-foreground)]">¥8,880</p>
+          <p class="text-xs text-[var(--lm-state-success)] mt-0.5">已签收</p>
+        </div>
+      </div>
+    </div>
+    <div class="py-3 border-b border-[var(--lm-border)]">
+      <div class="flex items-start justify-between">
+        <div>
+          <p class="text-sm font-semibold text-[var(--lm-foreground)]">2026-03-10</p>
+          <p class="text-xs text-[var(--lm-muted-foreground)] mt-0.5">共 10 个品规</p>
+        </div>
+        <div class="text-right">
+          <p class="text-sm font-bold text-[var(--lm-foreground)]">¥7,200</p>
+          <p class="text-xs text-[var(--lm-state-success)] mt-0.5">已签收</p>
+        </div>
+      </div>
+    </div>
+    <div class="py-3">
+      <div class="flex items-start justify-between">
+        <div>
+          <p class="text-sm font-semibold text-[var(--lm-foreground)]">2026-03-03</p>
+          <p class="text-xs text-[var(--lm-muted-foreground)] mt-0.5">共 11 个品规</p>
+        </div>
+        <div class="text-right">
+          <p class="text-sm font-bold text-[var(--lm-foreground)]">¥7,920</p>
+          <p class="text-xs text-[var(--lm-state-success)] mt-0.5">已签收</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="text-center mt-3">
+    <a href="#" class="text-sm text-[var(--lm-primary)] inline-flex items-center gap-0.5">查看全部订单 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+  </div>
+</div>
+<script>
+(function(){
+  var btn=document.getElementById('period-dropdown-btn');
+  var menu=document.getElementById('period-dropdown-menu');
+  var label=document.getElementById('period-label');
+  var list1m=document.getElementById('orders-1m');
+  var list3m=document.getElementById('orders-3m');
+  if(!btn||!menu) return;
+  btn.addEventListener('click',function(e){
+    e.stopPropagation();
+    menu.classList.toggle('hidden');
+  });
+  document.addEventListener('click',function(){menu.classList.add('hidden');});
+  var opts=document.querySelectorAll('.period-option');
+  for(var i=0;i<opts.length;i++){
+    opts[i].addEventListener('click',function(e){
+      e.stopPropagation();
+      var p=this.getAttribute('data-period');
+      label.textContent=this.textContent;
+      menu.classList.add('hidden');
+      if(p==='3m'){list1m.classList.add('hidden');list3m.classList.remove('hidden');}
+      else{list3m.classList.add('hidden');list1m.classList.remove('hidden');}
+    });
+  }
+})();
+</script>
+  <div class="flex items-center gap-2 mb-3">
+    <div class="pl-2 py-1 border-l-4 border-yellow-400 bg-[var(--lm-muted)] rounded-r-md">
+      <span class="text-sm font-semibold text-[var(--lm-foreground)]">商品查询</span>
+    </div>
+  </div><div class="bg-white rounded-xl border border-[var(--lm-border)] shadow-[var(--lm-shadow-1)] p-4 ">
+  <div class="relative mb-3"><span class="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--lm-muted-foreground)]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span><input type="text" placeholder="输入短码/名称/扫描条形码" class="w-full pl-9 pr-3 py-2 text-sm rounded-lg border border-[var(--lm-border)] bg-[var(--lm-background)] focus:outline-none focus:ring-2 focus:ring-[var(--lm-ring)]"></div>
+  <div class="p-3 rounded-lg bg-[var(--lm-background)]">
+    <div class="flex justify-between"><p class="text-sm font-semibold">玉溪（软）</p><p class="text-sm text-[var(--lm-primary)]">¥230/条</p></div>
+    <p class="text-xs text-[var(--lm-muted-foreground)] mt-1">红塔烟草（集团）有限责任公司</p>
+    <p class="text-xs text-[var(--lm-muted-foreground)] mt-1">批发价：¥201.4 | 清甜香型经典代表</p>
+  </div>
+</div>
+</div></main>
+  <div class="h-16"></div>
+  </div>
+  <nav data-mobile-nav="global" class="fixed bottom-0 left-0 z-50 w-full bg-white border-t border-[var(--lm-border)] safe-area-pb"><div class="w-full max-w-md mx-auto grid grid-cols-4 h-16"><a href="./basic-services.html" data-nav-key="retail-basic" data-dom-id="nav-retail-basic" class="min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[var(--lm-primary)] font-medium"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 shrink-0"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span class="text-[11px] leading-none whitespace-nowrap max-w-full truncate">基础服务</span></a><a href="./interactive-services.html" data-nav-key="retail-interactive" data-dom-id="nav-retail-interactive" class="min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[var(--lm-muted-foreground)]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 shrink-0"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span class="text-[11px] leading-none whitespace-nowrap max-w-full truncate">交互服务</span></a><a href="./business-analytics.html" data-nav-key="retail-analytics" data-dom-id="nav-retail-analytics" class="min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[var(--lm-muted-foreground)]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 shrink-0"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg><span class="text-[11px] leading-none whitespace-nowrap max-w-full truncate">经营分析</span></a><a href="./policy-learning.html" data-nav-key="retail-policy" data-dom-id="nav-retail-policy" class="min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[var(--lm-muted-foreground)]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 shrink-0"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg><span class="text-[11px] leading-none whitespace-nowrap max-w-full truncate">政策教学</span></a></div></nav>
+  <script>if(window.lucide) lucide.createIcons();</script>
+</body>
+</html>

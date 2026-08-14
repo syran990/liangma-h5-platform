@@ -1,0 +1,103 @@
+{
+  "root": {
+    "nodeId": "gen-project-shell",
+    "kind": "project-shell",
+    "pageIds": [
+      "page-entry",
+      "page-basic-services",
+      "page-interactive-services",
+      "page-business-analytics",
+      "page-policy-learning",
+      "page-public-info",
+      "page-supervision-feedback",
+      "page-consumer-insights"
+    ],
+    "output": null,
+    "sharedRegions": ["mobile-bottom-navigation-contract"],
+    "privateRegions": [],
+    "mutableSlots": [],
+    "status": "generated",
+    "children": [
+      {
+        "nodeId": "gen-page-entry",
+        "kind": "page-leaf",
+        "pageIds": ["page-entry"],
+        "output": "pages/entry.html",
+        "sharedRegions": [],
+        "privateRegions": ["full-page-content"],
+        "mutableSlots": [],
+        "status": "planned"
+      },
+      {
+        "nodeId": "gen-page-basic-services",
+        "kind": "page-leaf",
+        "pageIds": ["page-basic-services"],
+        "output": "pages/basic-services.html",
+        "sharedRegions": ["mobile-bottom-navigation-contract"],
+        "privateRegions": ["page-header", "module-content"],
+        "mutableSlots": ["activeNavItem"],
+        "status": "planned"
+      },
+      {
+        "nodeId": "gen-page-interactive-services",
+        "kind": "page-leaf",
+        "pageIds": ["page-interactive-services"],
+        "output": "pages/interactive-services.html",
+        "sharedRegions": ["mobile-bottom-navigation-contract"],
+        "privateRegions": ["page-header", "module-content"],
+        "mutableSlots": ["activeNavItem"],
+        "status": "planned"
+      },
+      {
+        "nodeId": "gen-page-business-analytics",
+        "kind": "page-leaf",
+        "pageIds": ["page-business-analytics"],
+        "output": "pages/business-analytics.html",
+        "sharedRegions": ["mobile-bottom-navigation-contract"],
+        "privateRegions": ["page-header", "module-content"],
+        "mutableSlots": ["activeNavItem"],
+        "status": "planned"
+      },
+      {
+        "nodeId": "gen-page-policy-learning",
+        "kind": "page-leaf",
+        "pageIds": ["page-policy-learning"],
+        "output": "pages/policy-learning.html",
+        "sharedRegions": ["mobile-bottom-navigation-contract"],
+        "privateRegions": ["page-header", "module-content"],
+        "mutableSlots": ["activeNavItem"],
+        "status": "planned"
+      },
+      {
+        "nodeId": "gen-page-public-info",
+        "kind": "page-leaf",
+        "pageIds": ["page-public-info"],
+        "output": "pages/public-info.html",
+        "sharedRegions": ["mobile-bottom-navigation-contract"],
+        "privateRegions": ["page-header", "module-content"],
+        "mutableSlots": ["activeNavItem"],
+        "status": "planned"
+      },
+      {
+        "nodeId": "gen-page-supervision-feedback",
+        "kind": "page-leaf",
+        "pageIds": ["page-supervision-feedback"],
+        "output": "pages/supervision-feedback.html",
+        "sharedRegions": ["mobile-bottom-navigation-contract"],
+        "privateRegions": ["page-header", "module-content"],
+        "mutableSlots": ["activeNavItem"],
+        "status": "planned"
+      },
+      {
+        "nodeId": "gen-page-consumer-insights",
+        "kind": "page-leaf",
+        "pageIds": ["page-consumer-insights"],
+        "output": "pages/consumer-insights.html",
+        "sharedRegions": ["mobile-bottom-navigation-contract"],
+        "privateRegions": ["page-header", "module-content"],
+        "mutableSlots": ["activeNavItem"],
+        "status": "planned"
+      }
+    ]
+  }
+}

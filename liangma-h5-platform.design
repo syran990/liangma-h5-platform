@@ -1,0 +1,329 @@
+{
+  "data": [
+    {
+      "id": "page-entry",
+      "title": "入口选择",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1755052800000,
+      "canvasData": {
+        "x": 0,
+        "y": 0,
+        "group": 0,
+        "layoutSnapshot": {
+          "version": 1,
+          "contentHeight": 900,
+          "viewportWidth": 375,
+          "sourceHash": "fnv1a-cd043941",
+          "measuredAt": 1786586480903
+        }
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/entry.html",
+        "interactions": [
+          {
+            "type": "navigate",
+            "target": "page-basic-services",
+            "label": "零售户入口"
+          },
+          {
+            "type": "navigate",
+            "target": "page-public-info",
+            "label": "消费者入口"
+          }
+        ]
+      }
+    },
+    {
+      "id": "page-basic-services",
+      "title": "基础服务",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1755052800000,
+      "canvasData": {
+        "x": 324,
+        "y": -24,
+        "group": 0,
+        "layoutSnapshot": {
+          "version": 1,
+          "contentHeight": 1202,
+          "viewportWidth": 375,
+          "sourceHash": "fnv1a-644113aa",
+          "measuredAt": 1786586480903
+        }
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/basic-services.html",
+        "interactions": [
+          {
+            "type": "navigate",
+            "target": "page-interactive-services",
+            "label": "交互服务"
+          },
+          {
+            "type": "navigate",
+            "target": "page-business-analytics",
+            "label": "经营分析"
+          },
+          {
+            "type": "navigate",
+            "target": "page-policy-learning",
+            "label": "政策教学"
+          },
+          {
+            "type": "navigate",
+            "target": "page-entry",
+            "label": "返回入口"
+          }
+        ]
+      }
+    },
+    {
+      "id": "page-interactive-services",
+      "title": "交互服务",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1755052800000,
+      "canvasData": {
+        "x": 648,
+        "y": 0,
+        "group": 0
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/interactive-services.html",
+        "interactions": [
+          {
+            "type": "navigate",
+            "target": "page-basic-services",
+            "label": "基础服务"
+          },
+          {
+            "type": "navigate",
+            "target": "page-business-analytics",
+            "label": "经营分析"
+          },
+          {
+            "type": "navigate",
+            "target": "page-policy-learning",
+            "label": "政策教学"
+          },
+          {
+            "type": "navigate",
+            "target": "page-entry",
+            "label": "返回入口"
+          }
+        ]
+      }
+    },
+    {
+      "id": "page-business-analytics",
+      "title": "经营分析",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1755052800000,
+      "canvasData": {
+        "x": 972,
+        "y": 0,
+        "group": 0
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/business-analytics.html",
+        "interactions": [
+          {
+            "type": "navigate",
+            "target": "page-basic-services",
+            "label": "基础服务"
+          },
+          {
+            "type": "navigate",
+            "target": "page-interactive-services",
+            "label": "交互服务"
+          },
+          {
+            "type": "navigate",
+            "target": "page-policy-learning",
+            "label": "政策教学"
+          },
+          {
+            "type": "navigate",
+            "target": "page-entry",
+            "label": "返回入口"
+          }
+        ]
+      }
+    },
+    {
+      "id": "page-policy-learning",
+      "title": "政策教学",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1755052800000,
+      "canvasData": {
+        "x": 1296,
+        "y": 0,
+        "group": 0
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/policy-learning.html",
+        "interactions": [
+          {
+            "type": "navigate",
+            "target": "page-basic-services",
+            "label": "基础服务"
+          },
+          {
+            "type": "navigate",
+            "target": "page-interactive-services",
+            "label": "交互服务"
+          },
+          {
+            "type": "navigate",
+            "target": "page-business-analytics",
+            "label": "经营分析"
+          },
+          {
+            "type": "navigate",
+            "target": "page-entry",
+            "label": "返回入口"
+          }
+        ]
+      }
+    },
+    {
+      "id": "page-public-info",
+      "title": "公开信息",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1755052800000,
+      "canvasData": {
+        "x": 1716,
+        "y": 0,
+        "group": 0
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/public-info.html",
+        "interactions": [
+          {
+            "type": "navigate",
+            "target": "page-supervision-feedback",
+            "label": "监督反馈"
+          },
+          {
+            "type": "navigate",
+            "target": "page-consumer-insights",
+            "label": "消费洞察"
+          },
+          {
+            "type": "navigate",
+            "target": "page-entry",
+            "label": "返回入口"
+          }
+        ]
+      }
+    },
+    {
+      "id": "page-supervision-feedback",
+      "title": "监督反馈",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1755052800000,
+      "canvasData": {
+        "x": 1944,
+        "y": 0,
+        "group": 0
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/supervision-feedback.html",
+        "interactions": [
+          {
+            "type": "navigate",
+            "target": "page-public-info",
+            "label": "公开信息"
+          },
+          {
+            "type": "navigate",
+            "target": "page-consumer-insights",
+            "label": "消费洞察"
+          },
+          {
+            "type": "navigate",
+            "target": "page-entry",
+            "label": "返回入口"
+          }
+        ]
+      }
+    },
+    {
+      "id": "page-supervision-feedback-v2",
+      "title": "监督反馈 - 找口粮版",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1755052800000,
+      "canvasData": {
+        "x": 1944,
+        "y": 200,
+        "group": 0
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/supervision-feedback-v2.html",
+        "interactions": [
+          {
+            "type": "navigate",
+            "target": "page-public-info",
+            "label": "公开信息"
+          },
+          {
+            "type": "navigate",
+            "target": "page-consumer-insights",
+            "label": "消费洞察"
+          },
+          {
+            "type": "navigate",
+            "target": "page-entry",
+            "label": "返回入口"
+          }
+        ]
+      }
+    },
+    {
+      "id": "page-consumer-insights",
+      "title": "消费洞察",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1755052800000,
+      "canvasData": {
+        "x": 2268,
+        "y": 0,
+        "group": 0
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/consumer-insights.html",
+        "interactions": [
+          {
+            "type": "navigate",
+            "target": "page-public-info",
+            "label": "公开信息"
+          },
+          {
+            "type": "navigate",
+            "target": "page-supervision-feedback",
+            "label": "监督反馈"
+          },
+          {
+            "type": "navigate",
+            "target": "page-entry",
+            "label": "返回入口"
+          }
+        ]
+      }
+    }
+  ],
+  "config": {
+    "autoLayout": false,
+    "deviceType": "mobile",
+    "projectName": "两码 H5 服务平台",
+    "designLibrary": null,
+    "visualEditorEnabled": true,
+    "showEdge": false
+  }
+}

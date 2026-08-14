@@ -1,0 +1,126 @@
+/* 两码 H5 服务平台 — 品牌色彩与字体系统 */
+
+:root {
+  /* 品牌主色 */
+  --lm-primary-50: #eff6ff;
+  --lm-primary-100: #dbeafe;
+  --lm-primary-200: #bfdbfe;
+  --lm-primary-300: #93c5fd;
+  --lm-primary-400: #60a5fa;
+  --lm-primary-500: #3b82f6;
+  --lm-primary-600: #2563eb;
+  --lm-primary-700: #1d4ed8;
+  --lm-primary-800: #1e40af;
+  --lm-primary-900: #1e3a8a;
+
+  /* 中性色阶 */
+  --lm-neutral-0: #ffffff;
+  --lm-neutral-50: #f8fafc;
+  --lm-neutral-100: #f1f5f9;
+  --lm-neutral-200: #e2e8f0;
+  --lm-neutral-300: #cbd5e1;
+  --lm-neutral-400: #94a3b8;
+  --lm-neutral-500: #64748b;
+  --lm-neutral-600: #475569;
+  --lm-neutral-700: #334155;
+  --lm-neutral-800: #1e293b;
+  --lm-neutral-900: #0f172a;
+
+  /* 语义颜色 */
+  --lm-background: #f8fafc;
+  --lm-foreground: #1e293b;
+  --lm-card: #ffffff;
+  --lm-card-foreground: #1e293b;
+  --lm-popover: #ffffff;
+  --lm-popover-foreground: #1e293b;
+  --lm-primary: #2563eb;
+  --lm-primary-foreground: #ffffff;
+  --lm-muted: #f1f5f9;
+  --lm-muted-foreground: #64748b;
+  --lm-border: #e2e8f0;
+  --lm-input: #e2e8f0;
+  --lm-ring: #3b82f6;
+
+  /* 状态色 */
+  --lm-state-success: #10b981;
+  --lm-state-success-bg: #ecfdf5;
+  --lm-state-warning: #f59e0b;
+  --lm-state-warning-bg: #fffbeb;
+  --lm-state-error: #ef4444;
+  --lm-state-error-bg: #fef2f2;
+  --lm-state-info: #3b82f6;
+  --lm-state-info-bg: #eff6ff;
+
+  /* 圆角 */
+  --lm-radius-sm: 4px;
+  --lm-radius-md: 8px;
+  --lm-radius-lg: 12px;
+  --lm-radius-xl: 16px;
+  --lm-radius-full: 9999px;
+
+  /* 阴影 */
+  --lm-shadow-1: 0 1px 2px rgba(15, 23, 42, 0.05), 0 1px 1px rgba(15, 23, 42, 0.03);
+  --lm-shadow-2: 0 4px 12px -4px rgba(15, 23, 42, 0.1);
+  --lm-shadow-3: 0 16px 40px -12px rgba(15, 23, 42, 0.18);
+
+  /* 间距 */
+  --lm-space-1: 4px;
+  --lm-space-2: 8px;
+  --lm-space-3: 12px;
+  --lm-space-4: 16px;
+  --lm-space-5: 20px;
+  --lm-space-6: 24px;
+  --lm-space-7: 32px;
+  --lm-space-8: 40px;
+
+  /* 字体 */
+  --lm-font-sans: Inter, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+  --lm-font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+
+  /* 字号 */
+  --lm-text-xs: 12px;
+  --lm-text-sm: 13px;
+  --lm-text-base: 15px;
+  --lm-text-lg: 17px;
+  --lm-text-xl: 20px;
+  --lm-text-2xl: 24px;
+  --lm-text-3xl: 30px;
+}
+
+.dark {
+  --lm-background: #0f172a;
+  --lm-foreground: #f8fafc;
+  --lm-card: #1e293b;
+  --lm-card-foreground: #f8fafc;
+  --lm-popover: #1e293b;
+  --lm-popover-foreground: #f8fafc;
+  --lm-primary: #60a5fa;
+  --lm-primary-foreground: #0f172a;
+  --lm-muted: #334155;
+  --lm-muted-foreground: #94a3b8;
+  --lm-border: #334155;
+  --lm-input: #334155;
+  --lm-ring: #60a5fa;
+}
+
+/* 兼容性语义别名 */
+:root {
+  --color-background: var(--lm-background);
+  --color-foreground: var(--lm-foreground);
+  --color-card: var(--lm-card);
+  --color-card-foreground: var(--lm-card-foreground);
+  --color-popover: var(--lm-popover);
+  --color-popover-foreground: var(--lm-popover-foreground);
+  --color-primary: var(--lm-primary);
+  --color-primary-foreground: var(--lm-primary-foreground);
+  --color-muted: var(--lm-muted);
+  --color-muted-foreground: var(--lm-muted-foreground);
+  --color-border: var(--lm-border);
+  --color-input: var(--lm-input);
+  --color-ring: var(--lm-ring);
+  --radius-sm: var(--lm-radius-sm);
+  --radius-md: var(--lm-radius-md);
+  --radius-lg: var(--lm-radius-lg);
+  --radius-xl: var(--lm-radius-xl);
+  --radius-full: var(--lm-radius-full);
+}

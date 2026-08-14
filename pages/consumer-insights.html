@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>消费洞察</title>
+<style id="theme-vars">
+:root {
+  --lm-primary-50:#eff6ff;--lm-primary-100:#dbeafe;--lm-primary-200:#bfdbfe;--lm-primary-300:#93c5fd;--lm-primary-400:#60a5fa;--lm-primary-500:#3b82f6;--lm-primary-600:#2563eb;--lm-primary-700:#1d4ed8;--lm-primary-800:#1e40af;--lm-primary-900:#1e3a8a;
+  --lm-neutral-0:#ffffff;--lm-neutral-50:#f8fafc;--lm-neutral-100:#f1f5f9;--lm-neutral-200:#e2e8f0;--lm-neutral-300:#cbd5e1;--lm-neutral-400:#94a3b8;--lm-neutral-500:#64748b;--lm-neutral-600:#475569;--lm-neutral-700:#334155;--lm-neutral-800:#1e293b;--lm-neutral-900:#2563eb;
+  --lm-background:#f8fafc;--lm-foreground:#1e293b;--lm-card:#ffffff;--lm-card-foreground:#1e293b;--lm-popover:#ffffff;--lm-popover-foreground:#1e293b;--lm-primary:#2563eb;--lm-primary-foreground:#ffffff;--lm-muted:#f1f5f9;--lm-muted-foreground:#64748b;--lm-border:#e2e8f0;--lm-input:#e2e8f0;--lm-ring:#3b82f6;
+  --lm-state-success:#10b981;--lm-state-success-bg:#ecfdf5;--lm-state-warning:#f59e0b;--lm-state-warning-bg:#fffbeb;--lm-state-error:#ef4444;--lm-state-error-bg:#fef2f2;--lm-state-info:#3b82f6;--lm-state-info-bg:#eff6ff;
+  --lm-radius-sm:4px;--lm-radius-md:8px;--lm-radius-lg:12px;--lm-radius-xl:16px;--lm-radius-full:9999px;
+  --lm-shadow-1:0 1px 2px rgba(15,23,42,0.05),0 1px 1px rgba(15,23,42,0.03);--lm-shadow-2:0 4px 12px -4px rgba(15,23,42,0.1);--lm-shadow-3:0 16px 40px -12px rgba(15,23,42,0.18);
+  --lm-space-1:4px;--lm-space-2:8px;--lm-space-3:12px;--lm-space-4:16px;--lm-space-5:20px;--lm-space-6:24px;--lm-space-7:32px;--lm-space-8:40px;
+  --lm-font-sans:Inter,"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --lm-font-mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --lm-text-xs:12px;--lm-text-sm:13px;--lm-text-base:15px;--lm-text-lg:17px;--lm-text-xl:20px;--lm-text-2xl:24px;--lm-text-3xl:30px;
+}
+.dark{--lm-background:#0f172a;--lm-foreground:#f8fafc;--lm-card:#1e293b;--lm-card-foreground:#f8fafc;--lm-popover:#1e293b;--lm-popover-foreground:#f8fafc;--lm-primary:#60a5fa;--lm-primary-foreground:#0f172a;--lm-muted:#334155;--lm-muted-foreground:#94a3b8;--lm-border:#334155;--lm-input:#334155;--lm-ring:#60a5fa;}
+:root{--color-background:var(--lm-background);--color-foreground:var(--lm-foreground);--color-card:var(--lm-card);--color-card-foreground:var(--lm-card-foreground);--color-popover:var(--lm-popover);--color-popover-foreground:var(--lm-popover-foreground);--color-primary:var(--lm-primary);--color-primary-foreground:var(--lm-primary-foreground);--color-muted:var(--lm-muted);--color-muted-foreground:var(--lm-muted-foreground);--color-border:var(--lm-border);--color-input:var(--lm-input);--color-ring:var(--lm-ring);--radius-sm:var(--lm-radius-sm);--radius-md:var(--lm-radius-md);--radius-lg:var(--lm-radius-lg);--radius-xl:var(--lm-radius-xl);--radius-full:var(--lm-radius-full);}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.1/dist/index.global.js"></script>
+<script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+<style type="text/tailwindcss">
+@theme inline {
+  --color-background:var(--lm-background);--color-foreground:var(--lm-foreground);--color-card:var(--lm-card);--color-card-foreground:var(--lm-card-foreground);--color-popover:var(--lm-popover);--color-popover-foreground:var(--lm-popover-foreground);--color-primary:var(--lm-primary);--color-primary-foreground:var(--lm-primary-foreground);--color-muted:var(--lm-muted);--color-muted-foreground:var(--lm-muted-foreground);--color-border:var(--lm-border);--color-input:var(--lm-input);--color-ring:var(--lm-ring);--radius-sm:var(--lm-radius-sm);--radius-md:var(--lm-radius-md);--radius-lg:var(--lm-radius-lg);--radius-xl:var(--lm-radius-xl);
+}
+@layer base { body{background:var(--lm-background);color:var(--lm-foreground);font-family:var(--lm-font-sans);-webkit-font-smoothing:antialiased;} }
+</style>
+<style>
+.no-scrollbar::-webkit-scrollbar{display:none;}
+.no-scrollbar{-ms-overflow-style:none;scrollbar-width:none;}
+.safe-area-pb{padding-bottom:max(12px,env(safe-area-inset-bottom));}
+</style>
+</head>
+<body class="min-h-screen bg-[var(--lm-background)] text-[var(--lm-foreground)] flex flex-col">
+  <div class="flex-1 w-full max-w-md mx-auto pb-4">
+    
+<header class="bg-[#2563eb] text-white">
+  <div class="max-w-md mx-auto px-4 py-5 text-center">
+    <h1 class="text-xl font-semibold tracking-tight">消费者监督码系统</h1>
+    <p class="text-sm text-white/80 mt-1">消费者信息查询与监督平台</p>
+  </div>
+</header><main class="px-4 py-4 space-y-5">
+  <div class="flex items-center gap-2 mb-3">
+    <div class="pl-2 py-1 border-l-4 border-yellow-400 bg-[var(--lm-muted)] rounded-r-md">
+      <span class="text-sm font-semibold text-[var(--lm-foreground)]">周边消费趋势</span>
+    </div>
+  </div><div class="grid grid-cols-2 gap-3"><div class="bg-white rounded-xl border border-[var(--lm-border)] p-4 text-center">
+  <p class="text-xs text-[var(--lm-muted-foreground)] mb-2">消费档次分布</p>
+  <div class="relative w-24 h-24 mx-auto">
+    <svg viewBox="0 0 100 100" class="w-full h-full -rotate-90">
+      <circle cx="50" cy="50" r="36" fill="none" stroke="#e2e8f0" stroke-width="10"/>
+      <circle cx="50" cy="50" r="36" fill="none" stroke="#2563eb" stroke-width="10" stroke-dasharray="135.72 226.19" stroke-dashoffset="0"/>
+      <circle cx="50" cy="50" r="36" fill="none" stroke="#10b981" stroke-width="10" stroke-dasharray="90.48 226.19" stroke-dashoffset="-135.72"/>
+      <circle cx="50" cy="50" r="36" fill="none" stroke="#f59e0b" stroke-width="10" stroke-dasharray="67.86 226.19" stroke-dashoffset="-226.20"/>
+    </svg>
+    <div class="absolute inset-0 flex flex-col items-center justify-center"><span class="text-sm font-bold">3档</span><span class="text-xs text-[var(--lm-muted-foreground)]">主流</span></div>
+  </div>
+  <div class="flex justify-center gap-2 mt-2 text-xs"><span class="flex items-center gap-0.5"><span class="w-2 h-2 rounded-full bg-[var(--lm-primary)]"></span>一类</span><span class="flex items-center gap-0.5"><span class="w-2 h-2 rounded-full bg-[var(--lm-state-success)]"></span>二类</span><span class="flex items-center gap-0.5"><span class="w-2 h-2 rounded-full bg-[var(--lm-state-warning)]"></span>三类</span></div>
+</div><div class="bg-white rounded-xl border border-[var(--lm-border)] p-4 text-center">
+  <p class="text-xs text-[var(--lm-muted-foreground)] mb-2">购买时段分布</p>
+  <div class="relative w-24 h-24 mx-auto">
+    <svg viewBox="0 0 100 100" class="w-full h-full -rotate-90">
+      <circle cx="50" cy="50" r="36" fill="none" stroke="#e2e8f0" stroke-width="10"/>
+      <circle cx="50" cy="50" r="36" fill="none" stroke="#2563eb" stroke-width="10" stroke-dasharray="113.10 226.19" stroke-dashoffset="0"/>
+      <circle cx="50" cy="50" r="36" fill="none" stroke="#10b981" stroke-width="10" stroke-dasharray="79.17 226.19" stroke-dashoffset="-113.10"/>
+      <circle cx="50" cy="50" r="36" fill="none" stroke="#f59e0b" stroke-width="10" stroke-dasharray="101.79 226.19" stroke-dashoffset="-192.27"/>
+    </svg>
+    <div class="absolute inset-0 flex flex-col items-center justify-center"><span class="text-sm font-bold">午后</span><span class="text-xs text-[var(--lm-muted-foreground)]">高峰</span></div>
+  </div>
+  <div class="flex justify-center gap-2 mt-2 text-xs"><span class="flex items-center gap-0.5"><span class="w-2 h-2 rounded-full bg-[var(--lm-primary)]"></span>上午</span><span class="flex items-center gap-0.5"><span class="w-2 h-2 rounded-full bg-[var(--lm-state-success)]"></span>下午</span><span class="flex items-center gap-0.5"><span class="w-2 h-2 rounded-full bg-[var(--lm-state-warning)]"></span>晚间</span></div>
+</div></div>
+  <div class="flex items-center gap-2 mb-3">
+    <div class="pl-2 py-1 border-l-4 border-yellow-400 bg-[var(--lm-muted)] rounded-r-md">
+      <span class="text-sm font-semibold text-[var(--lm-foreground)]">附近消费参考</span>
+    </div>
+  </div><div class="grid grid-cols-2 gap-3"><div class="bg-white rounded-xl border border-[var(--lm-border)] p-3"><div class="flex items-center gap-2 mb-1"><div class="w-7 h-7 rounded-lg bg-[var(--lm-primary-50)] text-[var(--lm-primary)] flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><span class="text-xs text-[var(--lm-muted-foreground)]">主力客群</span></div><p class="text-sm font-semibold">35-50岁男性</p></div><div class="bg-white rounded-xl border border-[var(--lm-border)] p-3"><div class="flex items-center gap-2 mb-1"><div class="w-7 h-7 rounded-lg bg-[var(--lm-state-success-bg)] text-[var(--lm-state-success)] flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div><span class="text-xs text-[var(--lm-muted-foreground)]">购买频次</span></div><p class="text-sm font-semibold">每周 2.3 次</p></div><div class="bg-white rounded-xl border border-[var(--lm-border)] p-3"><div class="flex items-center gap-2 mb-1"><div class="w-7 h-7 rounded-lg bg-[var(--lm-state-warning-bg)] text-[var(--lm-state-warning)] flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div><span class="text-xs text-[var(--lm-muted-foreground)]">客单价</span></div><p class="text-sm font-semibold">¥35</p></div><div class="bg-white rounded-xl border border-[var(--lm-border)] p-3"><div class="flex items-center gap-2 mb-1"><div class="w-7 h-7 rounded-lg bg-[var(--lm-state-info-bg)] text-[var(--lm-state-info)] flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div><span class="text-xs text-[var(--lm-muted-foreground)]">偏好品规</span></div><p class="text-sm font-semibold">玉溪（硬和谐）</p></div></div>
+  <div class="flex items-center gap-2 mb-3">
+    <div class="pl-2 py-1 border-l-4 border-yellow-400 bg-[var(--lm-muted)] rounded-r-md">
+      <span class="text-sm font-semibold text-[var(--lm-foreground)]">基于偏好的推荐</span>
+    </div>
+  </div><div class="bg-white rounded-xl border border-[var(--lm-border)] shadow-[var(--lm-shadow-1)] p-4 mb-3">
+  <div class="flex items-center gap-3">
+    <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-[var(--lm-primary-100)] to-[var(--lm-primary-200)] flex items-center justify-center shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-[var(--lm-primary)]"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
+    <div class="flex-1">
+      <p class="text-sm font-semibold">玉溪（细支108）</p>
+      <p class="text-xs text-[var(--lm-muted-foreground)] mt-0.5">同档次热销品规 · 您可能喜欢</p>
+    </div>
+    <span class="px-2 py-1 rounded-full text-xs bg-[var(--lm-state-success-bg)] text-[var(--lm-state-success)]">推荐</span>
+  </div>
+</div><div class="bg-white rounded-xl border border-[var(--lm-border)] shadow-[var(--lm-shadow-1)] p-4 ">
+  <div class="flex items-center gap-3">
+    <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-orange-100 to-orange-200 flex items-center justify-center shrink-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-orange-500"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
+    <div class="flex-1">
+      <p class="text-sm font-semibold">云烟（细支灵感蘑菇）</p>
+      <p class="text-xs text-[var(--lm-muted-foreground)] mt-0.5">新品上市 · 口感清新独特</p>
+    </div>
+    <span class="px-2 py-1 rounded-full text-xs bg-[var(--lm-state-warning-bg)] text-[var(--lm-state-warning)]">新品</span>
+  </div>
+</div><div class="flex items-start gap-2 p-3 rounded-lg bg-[var(--lm-state-info-bg)] text-[var(--lm-state-info)]"><div class="shrink-0 mt-0.5"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 12 15 17 10"/></svg></div><p class="text-xs">以上数据为门店消费群体汇总画像，不涉及个人隐私泄露，仅用于优化服务和商品推荐。</p></div></main>
+  <div class="h-16"></div>
+  </div>
+  <nav data-mobile-nav="global" class="fixed bottom-0 left-0 z-50 w-full bg-white border-t border-[var(--lm-border)] safe-area-pb"><div class="w-full max-w-md mx-auto grid grid-cols-3 h-16"><a href="./public-info.html" data-nav-key="consumer-public" data-dom-id="nav-consumer-public" class="min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[var(--lm-muted-foreground)]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 shrink-0"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 12 15 17 10"/></svg><span class="text-[11px] leading-none whitespace-nowrap max-w-full truncate">公开信息</span></a><a href="./supervision-feedback.html" data-nav-key="consumer-supervision" data-dom-id="nav-consumer-supervision" class="min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[var(--lm-muted-foreground)]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 shrink-0"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg><span class="text-[11px] leading-none whitespace-nowrap max-w-full truncate">监督反馈</span></a><a href="./consumer-insights.html" data-nav-key="consumer-insights" data-dom-id="nav-consumer-insights" class="min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[var(--lm-primary)] font-medium"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 shrink-0"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg><span class="text-[11px] leading-none whitespace-nowrap max-w-full truncate">消费洞察</span></a></div></nav>
+  <script>if(window.lucide) lucide.createIcons();</script>
+</body>
+</html>

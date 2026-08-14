@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>经营分析</title>
+<style id="theme-vars">
+:root {
+  --lm-primary-50:#eff6ff;--lm-primary-100:#dbeafe;--lm-primary-200:#bfdbfe;--lm-primary-300:#93c5fd;--lm-primary-400:#60a5fa;--lm-primary-500:#3b82f6;--lm-primary-600:#2563eb;--lm-primary-700:#1d4ed8;--lm-primary-800:#1e40af;--lm-primary-900:#1e3a8a;
+  --lm-neutral-0:#ffffff;--lm-neutral-50:#f8fafc;--lm-neutral-100:#f1f5f9;--lm-neutral-200:#e2e8f0;--lm-neutral-300:#cbd5e1;--lm-neutral-400:#94a3b8;--lm-neutral-500:#64748b;--lm-neutral-600:#475569;--lm-neutral-700:#334155;--lm-neutral-800:#1e293b;--lm-neutral-900:#2563eb;
+  --lm-background:#f8fafc;--lm-foreground:#1e293b;--lm-card:#ffffff;--lm-card-foreground:#1e293b;--lm-popover:#ffffff;--lm-popover-foreground:#1e293b;--lm-primary:#2563eb;--lm-primary-foreground:#ffffff;--lm-muted:#f1f5f9;--lm-muted-foreground:#64748b;--lm-border:#e2e8f0;--lm-input:#e2e8f0;--lm-ring:#3b82f6;
+  --lm-state-success:#10b981;--lm-state-success-bg:#ecfdf5;--lm-state-warning:#f59e0b;--lm-state-warning-bg:#fffbeb;--lm-state-error:#ef4444;--lm-state-error-bg:#fef2f2;--lm-state-info:#3b82f6;--lm-state-info-bg:#eff6ff;
+  --lm-radius-sm:4px;--lm-radius-md:8px;--lm-radius-lg:12px;--lm-radius-xl:16px;--lm-radius-full:9999px;
+  --lm-shadow-1:0 1px 2px rgba(15,23,42,0.05),0 1px 1px rgba(15,23,42,0.03);--lm-shadow-2:0 4px 12px -4px rgba(15,23,42,0.1);--lm-shadow-3:0 16px 40px -12px rgba(15,23,42,0.18);
+  --lm-space-1:4px;--lm-space-2:8px;--lm-space-3:12px;--lm-space-4:16px;--lm-space-5:20px;--lm-space-6:24px;--lm-space-7:32px;--lm-space-8:40px;
+  --lm-font-sans:Inter,"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --lm-font-mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --lm-text-xs:12px;--lm-text-sm:13px;--lm-text-base:15px;--lm-text-lg:17px;--lm-text-xl:20px;--lm-text-2xl:24px;--lm-text-3xl:30px;
+}
+.dark{--lm-background:#0f172a;--lm-foreground:#f8fafc;--lm-card:#1e293b;--lm-card-foreground:#f8fafc;--lm-popover:#1e293b;--lm-popover-foreground:#f8fafc;--lm-primary:#60a5fa;--lm-primary-foreground:#0f172a;--lm-muted:#334155;--lm-muted-foreground:#94a3b8;--lm-border:#334155;--lm-input:#334155;--lm-ring:#60a5fa;}
+:root{--color-background:var(--lm-background);--color-foreground:var(--lm-foreground);--color-card:var(--lm-card);--color-card-foreground:var(--lm-card-foreground);--color-popover:var(--lm-popover);--color-popover-foreground:var(--lm-popover-foreground);--color-primary:var(--lm-primary);--color-primary-foreground:var(--lm-primary-foreground);--color-muted:var(--lm-muted);--color-muted-foreground:var(--lm-muted-foreground);--color-border:var(--lm-border);--color-input:var(--lm-input);--color-ring:var(--lm-ring);--radius-sm:var(--lm-radius-sm);--radius-md:var(--lm-radius-md);--radius-lg:var(--lm-radius-lg);--radius-xl:var(--lm-radius-xl);--radius-full:var(--lm-radius-full);}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.1/dist/index.global.js"></script>
+<script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+<style type="text/tailwindcss">
+@theme inline {
+  --color-background:var(--lm-background);--color-foreground:var(--lm-foreground);--color-card:var(--lm-card);--color-card-foreground:var(--lm-card-foreground);--color-popover:var(--lm-popover);--color-popover-foreground:var(--lm-popover-foreground);--color-primary:var(--lm-primary);--color-primary-foreground:var(--lm-primary-foreground);--color-muted:var(--lm-muted);--color-muted-foreground:var(--lm-muted-foreground);--color-border:var(--lm-border);--color-input:var(--lm-input);--color-ring:var(--lm-ring);--radius-sm:var(--lm-radius-sm);--radius-md:var(--lm-radius-md);--radius-lg:var(--lm-radius-lg);--radius-xl:var(--lm-radius-xl);
+}
+@layer base { body{background:var(--lm-background);color:var(--lm-foreground);font-family:var(--lm-font-sans);-webkit-font-smoothing:antialiased;} }
+</style>
+<style>
+.no-scrollbar::-webkit-scrollbar{display:none;}
+.no-scrollbar{-ms-overflow-style:none;scrollbar-width:none;}
+.safe-area-pb{padding-bottom:max(12px,env(safe-area-inset-bottom));}
+</style>
+</head>
+<body class="min-h-screen bg-[var(--lm-background)] text-[var(--lm-foreground)] flex flex-col">
+  <div class="flex-1 w-full max-w-md mx-auto pb-4">
+    
+<header class="bg-[#2563eb] text-white">
+  <div class="max-w-md mx-auto px-4 py-5 text-center">
+    <h1 class="text-xl font-semibold tracking-tight">客户服务码系统</h1>
+    <p class="text-sm text-white/80 mt-1">零售户专属服务平台</p>
+  </div>
+</header><main class="px-4 py-4 space-y-5"><div class="flex p-1 bg-[var(--lm-muted)] rounded-lg text-sm"><button class="flex-1 py-1.5 rounded-md text-[var(--lm-muted-foreground)]">周</button><button class="flex-1 py-1.5 rounded-md bg-white text-[var(--lm-primary)] font-medium shadow-[var(--lm-shadow-1)]">月</button><button class="flex-1 py-1.5 rounded-md text-[var(--lm-muted-foreground)]">季</button></div>
+  <div class="flex items-center gap-2 mb-3">
+    <div class="pl-2 py-1 border-l-4 border-yellow-400 bg-[var(--lm-muted)] rounded-r-md">
+      <span class="text-sm font-semibold text-[var(--lm-foreground)]">销售趋势</span>
+    </div>
+  </div><div class="bg-white rounded-xl border border-[var(--lm-border)] shadow-[var(--lm-shadow-1)] p-4">
+  <div class="flex items-center justify-between mb-3"><p class="text-sm font-semibold">7月销售数据</p><span class="text-xs text-[var(--lm-muted-foreground)]">单位：条 / 元</span></div>
+  <svg viewBox="0 0 320 180" class="w-full">
+    <!-- 水平网格线 -->
+    <line x1="30" y1="20" x2="310" y2="20" stroke="#f1f5f9" stroke-width="1"/>
+    <line x1="30" y1="60" x2="310" y2="60" stroke="#f1f5f9" stroke-width="1"/>
+    <line x1="30" y1="100" x2="310" y2="100" stroke="#f1f5f9" stroke-width="1"/>
+    <line x1="30" y1="140" x2="310" y2="140" stroke="#f1f5f9" stroke-width="1"/>
+    <!-- 左轴刻度 (条) -->
+    <text x="25" y="24" text-anchor="end" font-size="8" fill="#94a3b8">180</text>
+    <text x="25" y="64" text-anchor="end" font-size="8" fill="#94a3b8">120</text>
+    <text x="25" y="104" text-anchor="end" font-size="8" fill="#94a3b8">60</text>
+    <text x="25" y="144" text-anchor="end" font-size="8" fill="#94a3b8">0</text>
+    <!-- 右轴刻度 (元) -->
+    <text x="315" y="24" text-anchor="start" font-size="8" fill="#94a3b8">3000</text>
+    <text x="315" y="64" text-anchor="start" font-size="8" fill="#94a3b8">2000</text>
+    <text x="315" y="104" text-anchor="start" font-size="8" fill="#94a3b8">1000</text>
+    <text x="315" y="144" text-anchor="start" font-size="8" fill="#94a3b8">0</text>
+    <!-- 订购额 柱状图 (青色) -->
+    <rect x="50" y="52" width="28" height="88" rx="2" fill="#3ECDC9" opacity="0.85"/>
+    <text x="64" y="48" text-anchor="middle" font-size="8" fill="#0f766e" font-weight="600">2512.38</text>
+    <rect x="105" y="65" width="28" height="75" rx="2" fill="#3ECDC9" opacity="0.85"/>
+    <text x="119" y="61" text-anchor="middle" font-size="8" fill="#0f766e" font-weight="600">2198.49</text>
+    <rect x="160" y="59" width="28" height="81" rx="2" fill="#3ECDC9" opacity="0.85"/>
+    <text x="174" y="55" text-anchor="middle" font-size="8" fill="#0f766e" font-weight="600">2376.62</text>
+    <rect x="215" y="78" width="28" height="62" rx="2" fill="#3ECDC9" opacity="0.85"/>
+    <text x="229" y="74" text-anchor="middle" font-size="8" fill="#0f766e" font-weight="600">1628.23</text>
+    <rect x="270" y="68" width="28" height="72" rx="2" fill="#3ECDC9" opacity="0.85"/>
+    <text x="284" y="64" text-anchor="middle" font-size="8" fill="#0f766e" font-weight="600">1996.43</text>
+    <!-- 订购量 柱状图 (紫色) -->
+    <rect x="50" y="128" width="28" height="12" rx="1" fill="#A8A4CE"/>
+    <text x="64" y="152" text-anchor="middle" font-size="7" fill="#6b21a8" font-weight="600">17</text>
+    <rect x="105" y="125" width="28" height="15" rx="1" fill="#A8A4CE"/>
+    <text x="119" y="152" text-anchor="middle" font-size="7" fill="#6b21a8" font-weight="600">19</text>
+    <rect x="160" y="122" width="28" height="18" rx="1" fill="#A8A4CE"/>
+    <text x="174" y="152" text-anchor="middle" font-size="7" fill="#6b21a8" font-weight="600">20</text>
+    <rect x="215" y="131" width="28" height="9" rx="1" fill="#A8A4CE"/>
+    <text x="229" y="152" text-anchor="middle" font-size="7" fill="#6b21a8" font-weight="600">13</text>
+    <rect x="270" y="128" width="28" height="12" rx="1" fill="#A8A4CE"/>
+    <text x="284" y="152" text-anchor="middle" font-size="7" fill="#6b21a8" font-weight="600">16</text>
+    <!-- 单条值 折线图 (橙色) -->
+    <polyline fill="none" stroke="#F4A261" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="64,78 119,92 174,92 229,108 284,108"/>
+    <circle cx="64" cy="78" r="3" fill="#F4A261"/>
+    <text x="64" y="72" text-anchor="middle" font-size="7" fill="#c2410c" font-weight="600">147.79</text>
+    <circle cx="119" cy="92" r="3" fill="#F4A261"/>
+    <text x="119" y="86" text-anchor="middle" font-size="7" fill="#c2410c" font-weight="600">115.71</text>
+    <circle cx="174" cy="92" r="3" fill="#F4A261"/>
+    <text x="174" y="86" text-anchor="middle" font-size="7" fill="#c2410c" font-weight="600">118.83</text>
+    <circle cx="229" cy="108" r="3" fill="#F4A261"/>
+    <text x="229" y="102" text-anchor="middle" font-size="7" fill="#c2410c" font-weight="600">125.25</text>
+    <circle cx="284" cy="108" r="3" fill="#F4A261"/>
+    <text x="284" y="102" text-anchor="middle" font-size="7" fill="#c2410c" font-weight="600">124.78</text>
+    <!-- X轴日期 -->
+    <text x="64" y="168" text-anchor="middle" font-size="8" fill="#475569">07/15</text>
+    <text x="119" y="168" text-anchor="middle" font-size="8" fill="#475569">07/22</text>
+    <text x="174" y="168" text-anchor="middle" font-size="8" fill="#475569">07/29</text>
+    <text x="229" y="168" text-anchor="middle" font-size="8" fill="#475569">08/05</text>
+    <text x="284" y="168" text-anchor="middle" font-size="8" fill="#475569">08/12</text>
+    <!-- 图例 -->
+    <circle cx="90" cy="178" r="4" fill="#3ECDC9"/>
+    <text x="98" y="181" font-size="8" fill="#475569">订购额</text>
+    <circle cx="145" cy="178" r="4" fill="#F4A261"/>
+    <text x="153" y="181" font-size="8" fill="#475569">单条值</text>
+    <circle cx="200" cy="178" r="4" fill="#A8A4CE"/>
+    <text x="208" y="181" font-size="8" fill="#475569">订购量</text>
+  </svg>
+</div>
+  <div class="flex items-center gap-2 mb-3">
+    <div class="pl-2 py-1 border-l-4 border-yellow-400 bg-[var(--lm-muted)] rounded-r-md">
+      <span class="text-sm font-semibold text-[var(--lm-foreground)]">精准货源推荐</span>
+    </div>
+  </div><div class="p-3 rounded-lg bg-[var(--lm-state-error-bg)] text-xs text-[var(--lm-state-error)] mb-3 flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>本周订完为止品规：云烟（细支大重九）</div><div class="bg-white rounded-xl border border-[var(--lm-border)] shadow-[var(--lm-shadow-1)] p-4 mb-3">
+  <p class="text-sm font-semibold mb-3">调控新品追踪</p>
+  <div class="flex gap-2.5 overflow-x-auto pb-2 -mx-1 px-1" style="scrollbar-width:none;-webkit-overflow-scrolling:touch">
+    <div class="shrink-0 w-28 p-2.5 rounded-lg bg-[var(--lm-state-success-bg)] border border-[var(--lm-state-success)]/30"><img src="../assets/img-lmg2.jpg" alt="云烟（细支灵感蘑菇）" class="w-full h-24 object-cover rounded-md mb-1.5"><p class="text-xs font-medium text-[var(--lm-foreground)] leading-tight">云烟</p><p class="text-xs font-medium text-[var(--lm-foreground)] leading-tight mt-0.5">（细支灵感蘑菇）</p><span class="inline-block mt-1.5 px-1.5 py-0.5 rounded-full text-xs bg-[var(--lm-state-success)] text-white">本周可订</span></div>
+    <div class="shrink-0 w-28 p-2.5 rounded-lg bg-[var(--lm-muted)] opacity-60"><img src="../assets/img-lmg.jpg" alt="云烟（细支筋斗云）" class="w-full h-24 object-cover rounded-md mb-1.5"><p class="text-xs font-medium text-[var(--lm-muted-foreground)] leading-tight">云烟</p><p class="text-xs font-medium text-[var(--lm-muted-foreground)] leading-tight mt-0.5">（细支筋斗云）</p><p class="text-xs text-[var(--lm-muted-foreground)] mt-1.5">上次投放：1月4日</p></div>
+    <div class="shrink-0 w-28 p-2.5 rounded-lg bg-[var(--lm-state-success-bg)] border border-[var(--lm-state-success)]/30"><img src="../assets/img-jdy.PNG" alt="玉溪（细支缤果爆）" class="w-full h-24 object-cover rounded-md mb-1.5"><p class="text-xs font-medium text-[var(--lm-foreground)] leading-tight">玉溪</p><p class="text-xs font-medium text-[var(--lm-foreground)] leading-tight mt-0.5">（细支缤果爆）</p><span class="inline-block mt-1.5 px-1.5 py-0.5 rounded-full text-xs bg-[var(--lm-state-success)] text-white">本周可订</span></div>
+    <div class="shrink-0 w-28 p-2.5 rounded-lg bg-[var(--lm-state-success-bg)] border border-[var(--lm-state-success)]/30"><img src="../assets/img-bgb.jpg" alt="玉溪（创客）" class="w-full h-24 object-cover rounded-md mb-1.5"><p class="text-xs font-medium text-[var(--lm-foreground)] leading-tight">玉溪</p><p class="text-xs font-medium text-[var(--lm-foreground)] leading-tight mt-0.5">（创客）</p><span class="inline-block mt-1.5 px-1.5 py-0.5 rounded-full text-xs bg-[var(--lm-state-success)] text-white">本周可订</span></div>
+    <div class="shrink-0 w-28 p-2.5 rounded-lg bg-[var(--lm-muted)] opacity-60"><img src="../assets/img-ck.PNG" alt="云烟（细支醇萃）" class="w-full h-24 object-cover rounded-md mb-1.5"><p class="text-xs font-medium text-[var(--lm-muted-foreground)] leading-tight">云烟</p><p class="text-xs font-medium text-[var(--lm-muted-foreground)] leading-tight mt-0.5">（细支醇萃）</p><p class="text-xs text-[var(--lm-muted-foreground)] mt-1.5">上次投放：12月21日</p></div>
+    <div class="shrink-0 w-28 p-2.5 rounded-lg bg-[var(--lm-muted)] opacity-60"><img src="../assets/img-cc.jpg" alt="云烟（细支小重九）" class="w-full h-24 object-cover rounded-md mb-1.5"><p class="text-xs font-medium text-[var(--lm-muted-foreground)] leading-tight">云烟</p><p class="text-xs font-medium text-[var(--lm-muted-foreground)] leading-tight mt-0.5">（细支小重九）</p><p class="text-xs text-[var(--lm-muted-foreground)] mt-1.5">上次投放：11月16日</p></div>
+  </div>
+</div><div class="bg-white rounded-xl border border-[var(--lm-border)] shadow-[var(--lm-shadow-1)] p-4 ">
+  <p class="text-sm font-semibold mb-1">本周投放较上周变化</p>
+  <p class="text-xs text-[var(--lm-muted-foreground)] mb-3">更新于 2026-7-17 17:00</p>
+  <div class="space-y-2">
+    <div class="flex items-center justify-between p-2 rounded-lg bg-[var(--lm-background)]"><div class="flex items-center gap-2"><span class="px-1.5 py-0.5 rounded text-xs bg-[var(--lm-state-success-bg)] text-[var(--lm-state-success)]">较上周新增</span><span class="text-sm">红塔山（硬新势力）</span></div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-[var(--lm-muted-foreground)]"><polyline points="9 18 15 12 9 6"/></svg></div>
+    <div class="flex items-center justify-between p-2 rounded-lg bg-[var(--lm-background)]"><div class="flex items-center gap-2"><span class="px-1.5 py-0.5 rounded text-xs bg-[var(--lm-state-success-bg)] text-[var(--lm-state-success)]">较上周新增</span><span class="text-sm">利群（新版）</span></div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-[var(--lm-muted-foreground)]"><polyline points="9 18 15 12 9 6"/></svg></div>
+    <div class="flex items-center justify-between p-2 rounded-lg bg-[var(--lm-background)]"><div class="flex items-center gap-2"><span class="px-1.5 py-0.5 rounded text-xs bg-[var(--lm-state-success-bg)] text-[var(--lm-state-success)]">较上周新增</span><span class="text-sm">牡丹（软）</span></div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-[var(--lm-muted-foreground)]"><polyline points="9 18 15 12 9 6"/></svg></div>
+    <div class="flex items-center justify-between p-2 rounded-lg bg-[var(--lm-background)]"><div class="flex items-center gap-2"><span class="px-1.5 py-0.5 rounded text-xs bg-[var(--lm-state-success-bg)] text-[var(--lm-state-success)]">较上周新增</span><span class="text-sm">红河（软甲）</span></div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-[var(--lm-muted-foreground)]"><polyline points="9 18 15 12 9 6"/></svg></div>
+    <div class="flex items-center justify-between p-2 rounded-lg bg-[var(--lm-background)]"><div class="flex items-center gap-2"><span class="px-1.5 py-0.5 rounded text-xs bg-[var(--lm-state-success-bg)] text-[var(--lm-state-success)]">较上周新增</span><span class="text-sm">中华（硬）</span></div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-[var(--lm-muted-foreground)]"><polyline points="9 18 15 12 9 6"/></svg></div>
+    <div class="flex items-center justify-between p-2 rounded-lg bg-[var(--lm-background)]"><div class="flex items-center gap-2"><span class="px-1.5 py-0.5 rounded text-xs bg-[var(--lm-state-info-bg)] text-[var(--lm-state-info)]">可订↑</span><span class="text-sm">红塔山（硬经典100）</span></div><span class="text-xs text-[var(--lm-state-info)]">+1条</span></div>
+    <div class="flex items-center justify-between p-2 rounded-lg bg-[var(--lm-background)]"><div class="flex items-center gap-2"><span class="px-1.5 py-0.5 rounded text-xs bg-[var(--lm-state-warning-bg)] text-[var(--lm-state-warning)]">可订↓</span><span class="text-sm">玉溪（软）</span></div><span class="text-xs text-[var(--lm-state-warning)]">-1条</span></div>
+    <div class="flex items-center justify-between p-2 rounded-lg bg-[var(--lm-background)]"><div class="flex items-center gap-2"><span class="px-1.5 py-0.5 rounded text-xs bg-[var(--lm-state-info-bg)] text-[var(--lm-state-info)]">可订↑</span><span class="text-sm">七匹狼（锋芒）</span></div><span class="text-xs text-[var(--lm-state-info)]">+1条</span></div>
+    <div class="flex items-center justify-between p-2 rounded-lg bg-[var(--lm-muted)] opacity-60"><div class="flex items-center gap-2"><span class="px-1.5 py-0.5 rounded text-xs bg-gray-200 text-gray-500">本周不投放</span><span class="text-sm text-[var(--lm-muted-foreground)]">云烟（印象烟庄）</span></div></div>
+    <div class="flex items-center justify-between p-2 rounded-lg bg-[var(--lm-muted)] opacity-60"><div class="flex items-center gap-2"><span class="px-1.5 py-0.5 rounded text-xs bg-gray-200 text-gray-500">本周不投放</span><span class="text-sm text-[var(--lm-muted-foreground)]">玉溪（硬和谐）</span></div></div>
+    <div class="flex items-center justify-between p-2 rounded-lg bg-[var(--lm-muted)] opacity-60"><div class="flex items-center gap-2"><span class="px-1.5 py-0.5 rounded text-xs bg-gray-200 text-gray-500">本周不投放</span><span class="text-sm text-[var(--lm-muted-foreground)]">玉溪（初心）</span></div></div>
+  </div>
+</div>
+  <div class="flex items-center gap-2 mb-3">
+    <div class="pl-2 py-1 border-l-4 border-yellow-400 bg-[var(--lm-muted)] rounded-r-md">
+      <span class="text-sm font-semibold text-[var(--lm-foreground)]">卷烟档位雷达</span>
+    </div>
+  </div>
+  <div class="bg-white rounded-xl border border-[var(--lm-border)] shadow-[var(--lm-shadow-1)] p-4">
+  <div class="flex items-center gap-2 mb-3">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--lm-primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><polygon points="12 2 19 7 19 17 12 22 5 17 5 7 12 2"/><polyline points="12 2 12 22"/><polyline points="5 7 19 17"/><polyline points="19 7 5 17"/></svg>
+    <p class="text-sm font-semibold">分档测评指标雷达图</p>
+  </div>
+  <div class="flex justify-center mb-4">
+    <svg viewBox="0 0 220 200" class="w-full max-w-[260px]" style="overflow:visible">
+      <polygon points="110,20 190,160 30,160" fill="none" stroke="#e2e8f0" stroke-width="1"/>
+      <polygon points="110,53 163,138 57,138" fill="none" stroke="#e2e8f0" stroke-width="1"/>
+      <polygon points="110,87 137,115 83,115" fill="none" stroke="#e2e8f0" stroke-width="1"/>
+      <line x1="110" y1="100" x2="110" y2="20" stroke="#e2e8f0" stroke-width="1"/>
+      <line x1="110" y1="100" x2="190" y2="160" stroke="#e2e8f0" stroke-width="1"/>
+      <line x1="110" y1="100" x2="30" y2="160" stroke="#e2e8f0" stroke-width="1"/>
+      <text x="115" y="55" font-size="8" fill="#94a3b8">2</text>
+      <text x="115" y="90" font-size="8" fill="#94a3b8">1</text>
+      <text x="115" y="18" font-size="8" fill="#94a3b8">3</text>
+      <polygon points="110,32 175,150 45,150" fill="rgba(20,184,166,0.08)" stroke="#14b8a6" stroke-width="2" stroke-linejoin="round"/>
+      <circle cx="110" cy="32" r="3.5" fill="#14b8a6"/>
+      <circle cx="175" cy="150" r="3.5" fill="#14b8a6"/>
+      <circle cx="45" cy="150" r="3.5" fill="#14b8a6"/>
+      <polygon points="110,62 150,138 70,138" fill="rgba(245,158,11,0.12)" stroke="#f59e0b" stroke-width="2" stroke-linejoin="round"/>
+      <circle cx="110" cy="62" r="3.5" fill="#f59e0b"/>
+      <circle cx="150" cy="138" r="3.5" fill="#f59e0b"/>
+      <circle cx="70" cy="138" r="3.5" fill="#f59e0b"/>
+      <text x="110" y="12" text-anchor="middle" font-size="11" font-weight="600" fill="#1e293b">投放订购量</text>
+      <text x="200" y="175" text-anchor="middle" font-size="10" fill="#475569">选订购金额</text>
+      <text x="20" y="175" text-anchor="middle" font-size="10" fill="#475569">二次自选</text>
+      <text x="20" y="187" text-anchor="middle" font-size="10" fill="#475569">投放订购量</text>
+      <rect x="55" y="193" width="8" height="8" rx="1" fill="#f59e0b"/>
+      <text x="67" y="200" font-size="9" fill="#475569">指标得分</text>
+      <rect x="125" y="193" width="8" height="8" rx="1" fill="#14b8a6"/>
+      <text x="137" y="200" font-size="9" fill="#475569">上档最低得分</text>
+    </svg>
+  </div>
+  <div class="mb-4">
+    <p class="text-sm font-semibold mb-2 flex items-center gap-1.5"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--lm-primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>档位明细</p>
+    <div class="grid grid-cols-2 gap-x-4 gap-y-2 text-sm p-3 rounded-lg bg-[var(--lm-background)]">
+      <div class="flex justify-between"><span class="text-[var(--lm-muted-foreground)]">测评档位</span><span class="font-semibold text-[var(--lm-primary)]">08</span></div>
+      <div class="flex justify-between"><span class="text-[var(--lm-muted-foreground)]">测评得分</span><span class="font-semibold">5.34分</span></div>
+      <div class="flex justify-between"><span class="text-[var(--lm-muted-foreground)]">上一档位</span><span class="font-semibold text-[var(--lm-state-warning)]">09</span></div>
+      <div class="flex justify-between"><span class="text-[var(--lm-muted-foreground)]">上档最低分</span><span class="font-semibold">5.59分</span></div>
+      <div class="flex justify-between col-span-2"><span class="text-[var(--lm-muted-foreground)]">测评时间</span><span class="font-semibold">2026-03-31</span></div>
+    </div>
+  </div>
+  <div>
+    <p class="text-sm font-semibold mb-2 flex items-center gap-1.5"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--lm-primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>指标得分明细</p>
+    <div class="space-y-3">
+      <div>
+        <div class="flex items-center justify-between text-xs mb-1">
+          <span class="text-[var(--lm-foreground)] flex-1 truncate">卷烟购进量（剔除雪茄烟、罚没烟、残损订单、特殊标注）</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <div class="flex-1 h-1.5 rounded-full bg-[var(--lm-muted)] overflow-hidden"><div class="h-full rounded-full bg-[var(--lm-primary)]" style="width:35%"></div></div>
+          <span class="text-xs text-[var(--lm-muted-foreground)] shrink-0">127.00</span>
+          <span class="text-xs font-semibold text-[var(--lm-primary)] shrink-0">1.86分</span>
+        </div>
+      </div>
+      <div>
+        <div class="flex items-center justify-between text-xs mb-1">
+          <span class="text-[var(--lm-foreground)] flex-1 truncate">投放订购量</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <div class="flex-1 h-1.5 rounded-full bg-[var(--lm-muted)] overflow-hidden"><div class="h-full rounded-full bg-[var(--lm-state-success)]" style="width:58%"></div></div>
+          <span class="text-xs text-[var(--lm-muted-foreground)] shrink-0">98.50</span>
+          <span class="text-xs font-semibold text-[var(--lm-state-success)] shrink-0">1.74分</span>
+        </div>
+      </div>
+      <div>
+        <div class="flex items-center justify-between text-xs mb-1">
+          <span class="text-[var(--lm-foreground)] flex-1 truncate">选订购金额</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <div class="flex-1 h-1.5 rounded-full bg-[var(--lm-muted)] overflow-hidden"><div class="h-full rounded-full bg-[var(--lm-state-warning)]" style="width:50%"></div></div>
+          <span class="text-xs text-[var(--lm-muted-foreground)] shrink-0">85.20</span>
+          <span class="text-xs font-semibold text-[var(--lm-state-warning)] shrink-0">1.74分</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></main>
+  <div class="h-16"></div>
+  </div>
+  <nav data-mobile-nav="global" class="fixed bottom-0 left-0 z-50 w-full bg-white border-t border-[var(--lm-border)] safe-area-pb"><div class="w-full max-w-md mx-auto grid grid-cols-4 h-16"><a href="./basic-services.html" data-nav-key="retail-basic" data-dom-id="nav-retail-basic" class="min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[var(--lm-muted-foreground)]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 shrink-0"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span class="text-[11px] leading-none whitespace-nowrap max-w-full truncate">基础服务</span></a><a href="./interactive-services.html" data-nav-key="retail-interactive" data-dom-id="nav-retail-interactive" class="min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[var(--lm-muted-foreground)]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 shrink-0"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span class="text-[11px] leading-none whitespace-nowrap max-w-full truncate">交互服务</span></a><a href="./business-analytics.html" data-nav-key="retail-analytics" data-dom-id="nav-retail-analytics" class="min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[var(--lm-primary)] font-medium"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 shrink-0"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg><span class="text-[11px] leading-none whitespace-nowrap max-w-full truncate">经营分析</span></a><a href="./policy-learning.html" data-nav-key="retail-policy" data-dom-id="nav-retail-policy" class="min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[var(--lm-muted-foreground)]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 shrink-0"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg><span class="text-[11px] leading-none whitespace-nowrap max-w-full truncate">政策教学</span></a></div></nav>
+  <script>if(window.lucide) lucide.createIcons();</script>
+</body>
+</html>

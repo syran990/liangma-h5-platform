@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>监督反馈</title>
+<style id="theme-vars">
+:root {
+  --lm-primary-50:#eff6ff;--lm-primary-100:#dbeafe;--lm-primary-200:#bfdbfe;--lm-primary-300:#93c5fd;--lm-primary-400:#60a5fa;--lm-primary-500:#3b82f6;--lm-primary-600:#2563eb;--lm-primary-700:#1d4ed8;--lm-primary-800:#1e40af;--lm-primary-900:#1e3a8a;
+  --lm-neutral-0:#ffffff;--lm-neutral-50:#f8fafc;--lm-neutral-100:#f1f5f9;--lm-neutral-200:#e2e8f0;--lm-neutral-300:#cbd5e1;--lm-neutral-400:#94a3b8;--lm-neutral-500:#64748b;--lm-neutral-600:#475569;--lm-neutral-700:#334155;--lm-neutral-800:#1e293b;--lm-neutral-900:#2563eb;
+  --lm-background:#f8fafc;--lm-foreground:#1e293b;--lm-card:#ffffff;--lm-card-foreground:#1e293b;--lm-popover:#ffffff;--lm-popover-foreground:#1e293b;--lm-primary:#2563eb;--lm-primary-foreground:#ffffff;--lm-muted:#f1f5f9;--lm-muted-foreground:#64748b;--lm-border:#e2e8f0;--lm-input:#e2e8f0;--lm-ring:#3b82f6;
+  --lm-state-success:#10b981;--lm-state-success-bg:#ecfdf5;--lm-state-warning:#f59e0b;--lm-state-warning-bg:#fffbeb;--lm-state-error:#ef4444;--lm-state-error-bg:#fef2f2;--lm-state-info:#3b82f6;--lm-state-info-bg:#eff6ff;
+  --lm-radius-sm:4px;--lm-radius-md:8px;--lm-radius-lg:12px;--lm-radius-xl:16px;--lm-radius-full:9999px;
+  --lm-shadow-1:0 1px 2px rgba(15,23,42,0.05),0 1px 1px rgba(15,23,42,0.03);--lm-shadow-2:0 4px 12px -4px rgba(15,23,42,0.1);--lm-shadow-3:0 16px 40px -12px rgba(15,23,42,0.18);
+  --lm-space-1:4px;--lm-space-2:8px;--lm-space-3:12px;--lm-space-4:16px;--lm-space-5:20px;--lm-space-6:24px;--lm-space-7:32px;--lm-space-8:40px;
+  --lm-font-sans:Inter,"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --lm-font-mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --lm-text-xs:12px;--lm-text-sm:13px;--lm-text-base:15px;--lm-text-lg:17px;--lm-text-xl:20px;--lm-text-2xl:24px;--lm-text-3xl:30px;
+}
+.dark{--lm-background:#0f172a;--lm-foreground:#f8fafc;--lm-card:#1e293b;--lm-card-foreground:#f8fafc;--lm-popover:#1e293b;--lm-popover-foreground:#f8fafc;--lm-primary:#60a5fa;--lm-primary-foreground:#0f172a;--lm-muted:#334155;--lm-muted-foreground:#94a3b8;--lm-border:#334155;--lm-input:#334155;--lm-ring:#60a5fa;}
+:root{--color-background:var(--lm-background);--color-foreground:var(--lm-foreground);--color-card:var(--lm-card);--color-card-foreground:var(--lm-card-foreground);--color-popover:var(--lm-popover);--color-popover-foreground:var(--lm-popover-foreground);--color-primary:var(--lm-primary);--color-primary-foreground:var(--lm-primary-foreground);--color-muted:var(--lm-muted);--color-muted-foreground:var(--lm-muted-foreground);--color-border:var(--lm-border);--color-input:var(--lm-input);--color-ring:var(--lm-ring);--radius-sm:var(--lm-radius-sm);--radius-md:var(--lm-radius-md);--radius-lg:var(--lm-radius-lg);--radius-xl:var(--lm-radius-xl);--radius-full:var(--lm-radius-full);}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.1/dist/index.global.js"></script>
+<script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+<style type="text/tailwindcss">
+@theme inline {
+  --color-background:var(--lm-background);--color-foreground:var(--lm-foreground);--color-card:var(--lm-card);--color-card-foreground:var(--lm-card-foreground);--color-popover:var(--lm-popover);--color-popover-foreground:var(--lm-popover-foreground);--color-primary:var(--lm-primary);--color-primary-foreground:var(--lm-primary-foreground);--color-muted:var(--lm-muted);--color-muted-foreground:var(--lm-muted-foreground);--color-border:var(--lm-border);--color-input:var(--lm-input);--color-ring:var(--lm-ring);--radius-sm:var(--lm-radius-sm);--radius-md:var(--lm-radius-md);--radius-lg:var(--lm-radius-lg);--radius-xl:var(--lm-radius-xl);
+}
+@layer base { body{background:var(--lm-background);color:var(--lm-foreground);font-family:var(--lm-font-sans);-webkit-font-smoothing:antialiased;} }
+</style>
+<style>
+.no-scrollbar::-webkit-scrollbar{display:none;}
+.no-scrollbar{-ms-overflow-style:none;scrollbar-width:none;}
+.safe-area-pb{padding-bottom:max(12px,env(safe-area-inset-bottom));}
+</style>
+</head>
+<body class="min-h-screen bg-[var(--lm-background)] text-[var(--lm-foreground)] flex flex-col">
+  <div class="flex-1 w-full max-w-md mx-auto pb-4">
+    
+<header class="bg-[#2563eb] text-white">
+  <div class="max-w-md mx-auto px-4 py-5 text-center">
+    <h1 class="text-xl font-semibold tracking-tight">消费者监督码系统</h1>
+    <p class="text-sm text-white/80 mt-1">消费者信息查询与监督平台</p>
+  </div>
+</header><main class="px-4 py-4 space-y-5"><div class="flex p-1 bg-[var(--lm-muted)] rounded-lg"><button class="flex-1 py-2 text-sm font-medium rounded-md bg-white text-[var(--lm-primary)] shadow-[var(--lm-shadow-1)]">服务评价</button><button class="flex-1 py-2 text-sm text-[var(--lm-muted-foreground)]">投诉监督</button></div>
+  <div class="flex items-center gap-2 mb-3">
+    <div class="pl-2 py-1 border-l-4 border-yellow-400 bg-[var(--lm-muted)] rounded-r-md">
+      <span class="text-sm font-semibold text-[var(--lm-foreground)]">店铺服务评价</span>
+    </div>
+  </div><div class="bg-white rounded-xl border border-[var(--lm-border)] shadow-[var(--lm-shadow-1)] p-4 ">
+  <div class="space-y-4">
+    <div class="text-center">
+      <p class="text-xs text-[var(--lm-muted-foreground)] mb-2">为本次服务打分</p>
+      <div class="flex justify-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="cursor-pointer"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="cursor-pointer"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="cursor-pointer"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="cursor-pointer"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#cbd5e1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="cursor-pointer"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <p class="text-sm font-medium text-[var(--lm-state-warning)] mt-1">满意</p>
+    </div>
+    <div>
+      <label class="text-xs text-[var(--lm-muted-foreground)] mb-1 block">评价内容</label>
+      <textarea rows="3" placeholder="说说您的消费体验..." class="w-full px-3 py-2 text-sm rounded-lg border border-[var(--lm-border)] bg-[var(--lm-background)] focus:outline-none focus:ring-2 focus:ring-[var(--lm-ring)] resize-none"></textarea>
+    </div>
+    <div class="flex items-center gap-2 text-sm text-[var(--lm-muted-foreground)]"><div class="w-8 h-8 rounded-lg border border-dashed border-[var(--lm-border)] flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div><span class="text-xs">添加图片</span></div>
+    <button class="w-full py-2.5 text-sm font-medium text-white rounded-lg bg-[var(--lm-primary)] flex items-center justify-center gap-1.5"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>提交评价</button>
+  </div>
+</div>
+  <div class="flex items-center gap-2 mb-3">
+    <div class="pl-2 py-1 border-l-4 border-yellow-400 bg-[var(--lm-muted)] rounded-r-md">
+      <span class="text-sm font-semibold text-[var(--lm-foreground)]">消费调研问卷</span>
+    </div>
+  </div><div class="bg-white rounded-xl border border-[var(--lm-border)] shadow-[var(--lm-shadow-1)] p-4 mb-3">
+  <div class="flex items-center justify-between mb-2"><div><p class="text-sm font-semibold">卷烟消费偏好调查</p><p class="text-xs text-[var(--lm-muted-foreground)] mt-0.5">您的意见对我们很重要</p></div><span class="px-2 py-0.5 rounded-full text-xs bg-[var(--lm-state-warning-bg)] text-[var(--lm-state-warning)]">待填写</span></div>
+  <button class="w-full py-2 text-sm text-[var(--lm-primary)] rounded-lg border border-[var(--lm-primary)] mt-2">参与问卷</button>
+</div><div class="bg-white rounded-xl border border-[var(--lm-border)] shadow-[var(--lm-shadow-1)] p-4 ">
+  <div class="flex items-center justify-between mb-2"><div><p class="text-sm font-semibold">新品体验反馈</p><p class="text-xs text-[var(--lm-muted-foreground)] mt-0.5">细支灵感蘑菇新品上市</p></div><span class="px-2 py-0.5 rounded-full text-xs bg-[var(--lm-state-warning-bg)] text-[var(--lm-state-warning)]">待填写</span></div>
+  <button class="w-full py-2 text-sm text-[var(--lm-primary)] rounded-lg border border-[var(--lm-primary)] mt-2">参与问卷</button>
+</div>
+  <div class="flex items-center gap-2 mb-3">
+    <div class="pl-2 py-1 border-l-4 border-yellow-400 bg-[var(--lm-muted)] rounded-r-md">
+      <span class="text-sm font-semibold text-[var(--lm-foreground)]">我的评价记录</span>
+    </div>
+  </div><div class="bg-white rounded-xl border border-[var(--lm-border)] shadow-[var(--lm-shadow-1)] p-4 ">
+  <div class="space-y-3">
+    <div class="pb-3 border-b border-[var(--lm-border)]">
+      <div class="flex items-center justify-between mb-1"><p class="text-sm font-medium">张记便利店</p><span class="text-xs text-[var(--lm-muted-foreground)]">2025-08-10</span></div>
+      <div class="flex items-center gap-1 mb-1"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="inline-block"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="inline-block"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="inline-block"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="inline-block"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="inline-block"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+      <p class="text-xs text-[var(--lm-muted-foreground)]">老板服务热情，店铺整洁，货源齐全。</p>
+    </div>
+    <div class="pb-3 border-b border-[var(--lm-border)]">
+      <div class="flex items-center justify-between mb-1"><p class="text-sm font-medium">玉溪商行</p><span class="text-xs text-[var(--lm-muted-foreground)]">2025-08-05</span></div>
+      <div class="flex items-center gap-1 mb-1"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="inline-block"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="inline-block"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="inline-block"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="inline-block"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#cbd5e1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="inline-block"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+      <p class="text-xs text-[var(--lm-muted-foreground)]">价格透明，但部分品规缺货。</p>
+    </div>
+    <div>
+      <div class="flex items-center justify-between mb-1"><p class="text-sm font-medium">李氏烟酒茶</p><span class="text-xs text-[var(--lm-muted-foreground)]">2025-07-28</span></div>
+      <div class="flex items-center gap-1 mb-1"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="inline-block"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="inline-block"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="inline-block"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#cbd5e1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="inline-block"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#cbd5e1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="inline-block"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+      <p class="text-xs text-[var(--lm-muted-foreground)]">店铺位置不太好找，服务一般。</p>
+    </div>
+  </div>
+</div></main>
+  <div class="h-16"></div>
+  </div>
+  <nav data-mobile-nav="global" class="fixed bottom-0 left-0 z-50 w-full bg-white border-t border-[var(--lm-border)] safe-area-pb"><div class="w-full max-w-md mx-auto grid grid-cols-3 h-16"><a href="./public-info.html" data-nav-key="consumer-public" data-dom-id="nav-consumer-public" class="min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[var(--lm-muted-foreground)]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 shrink-0"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 12 15 17 10"/></svg><span class="text-[11px] leading-none whitespace-nowrap max-w-full truncate">公开信息</span></a><a href="./supervision-feedback.html" data-nav-key="consumer-supervision" data-dom-id="nav-consumer-supervision" class="min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[var(--lm-primary)] font-medium"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 shrink-0"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg><span class="text-[11px] leading-none whitespace-nowrap max-w-full truncate">监督反馈</span></a><a href="./consumer-insights.html" data-nav-key="consumer-insights" data-dom-id="nav-consumer-insights" class="min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[var(--lm-muted-foreground)]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 shrink-0"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg><span class="text-[11px] leading-none whitespace-nowrap max-w-full truncate">消费洞察</span></a></div></nav>
+  <script>if(window.lucide) lucide.createIcons();</script>
+</body>
+</html>

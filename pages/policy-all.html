@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>全部政策</title>
+<style id="theme-vars">
+:root {
+  --lm-primary-50:#eff6ff;--lm-primary-100:#dbeafe;--lm-primary-200:#bfdbfe;--lm-primary-300:#93c5fd;--lm-primary-400:#60a5fa;--lm-primary-500:#3b82f6;--lm-primary-600:#2563eb;--lm-primary-700:#1d4ed8;--lm-primary-800:#1e40af;--lm-primary-900:#1e3a8a;
+  --lm-neutral-0:#ffffff;--lm-neutral-50:#f8fafc;--lm-neutral-100:#f1f5f9;--lm-neutral-200:#e2e8f0;--lm-neutral-300:#cbd5e1;--lm-neutral-400:#94a3b8;--lm-neutral-500:#64748b;--lm-neutral-600:#475569;--lm-neutral-700:#334155;--lm-neutral-800:#1e293b;--lm-neutral-900:#2563eb;
+  --lm-background:#f8fafc;--lm-foreground:#1e293b;--lm-card:#ffffff;--lm-card-foreground:#1e293b;--lm-popover:#ffffff;--lm-popover-foreground:#1e293b;--lm-primary:#2563eb;--lm-primary-foreground:#ffffff;--lm-muted:#f1f5f9;--lm-muted-foreground:#64748b;--lm-border:#e2e8f0;--lm-input:#e2e8f0;--lm-ring:#3b82f6;
+  --lm-state-success:#10b981;--lm-state-success-bg:#ecfdf5;--lm-state-warning:#f59e0b;--lm-state-warning-bg:#fffbeb;--lm-state-error:#ef4444;--lm-state-error-bg:#fef2f2;--lm-state-info:#3b82f6;--lm-state-info-bg:#eff6ff;
+  --lm-radius-sm:4px;--lm-radius-md:8px;--lm-radius-lg:12px;--lm-radius-xl:16px;--lm-radius-full:9999px;
+  --lm-shadow-1:0 1px 2px rgba(15,23,42,0.05),0 1px 1px rgba(15,23,42,0.03);--lm-shadow-2:0 4px 12px -4px rgba(15,23,42,0.1);--lm-shadow-3:0 16px 40px -12px rgba(15,23,42,0.18);
+  --lm-space-1:4px;--lm-space-2:8px;--lm-space-3:12px;--lm-space-4:16px;--lm-space-5:20px;--lm-space-6:24px;--lm-space-7:32px;--lm-space-8:40px;
+  --lm-font-sans:Inter,"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --lm-font-mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --lm-text-xs:12px;--lm-text-sm:13px;--lm-text-base:15px;--lm-text-lg:17px;--lm-text-xl:20px;--lm-text-2xl:24px;--lm-text-3xl:30px;
+}
+.dark{--lm-background:#0f172a;--lm-foreground:#f8fafc;--lm-card:#1e293b;--lm-card-foreground:#f8fafc;--lm-popover:#1e293b;--lm-popover-foreground:#f8fafc;--lm-primary:#60a5fa;--lm-primary-foreground:#0f172a;--lm-muted:#334155;--lm-muted-foreground:#94a3b8;--lm-border:#334155;--lm-input:#334155;--lm-ring:#60a5fa;}
+:root{--color-background:var(--lm-background);--color-foreground:var(--lm-foreground);--color-card:var(--lm-card);--color-card-foreground:var(--lm-card-foreground);--color-popover:var(--lm-popover);--color-popover-foreground:var(--lm-popover-foreground);--color-primary:var(--lm-primary);--color-primary-foreground:var(--lm-primary-foreground);--color-muted:var(--lm-muted);--color-muted-foreground:var(--lm-muted-foreground);--color-border:var(--lm-border);--color-input:var(--lm-input);--color-ring:var(--lm-ring);--radius-sm:var(--lm-radius-sm);--radius-md:var(--lm-radius-md);--radius-lg:var(--lm-radius-lg);--radius-xl:var(--lm-radius-xl);--radius-full:var(--lm-radius-full);}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.1/dist/index.global.js"></script>
+<script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+<style type="text/tailwindcss">
+@theme inline {
+  --color-background:var(--lm-background);--color-foreground:var(--lm-foreground);--color-card:var(--lm-card);--color-card-foreground:var(--lm-card-foreground);--color-popover:var(--lm-popover);--color-popover-foreground:var(--lm-popover-foreground);--color-primary:var(--lm-primary);--color-primary-foreground:var(--lm-primary-foreground);--color-muted:var(--lm-muted);--color-muted-foreground:var(--lm-muted-foreground);--color-border:var(--lm-border);--color-input:var(--lm-input);--color-ring:var(--lm-ring);--radius-sm:var(--lm-radius-sm);--radius-md:var(--lm-radius-md);--radius-lg:var(--lm-radius-lg);--radius-xl:var(--lm-radius-xl);
+}
+@layer base { body{background:var(--lm-background);color:var(--lm-foreground);font-family:var(--lm-font-sans);-webkit-font-smoothing:antialiased;} }
+</style>
+<style>
+.no-scrollbar::-webkit-scrollbar{display:none;}
+.no-scrollbar{-ms-overflow-style:none;scrollbar-width:none;}
+</style>
+</head>
+<body class="min-h-screen bg-[var(--lm-background)] text-[var(--lm-foreground)] flex flex-col">
+  <div class="flex-1 w-full max-w-md mx-auto pb-4">
+<header class="bg-[#2563eb] text-white sticky top-0 z-10">
+  <div class="max-w-md mx-auto px-4 py-4 flex items-center gap-3">
+    <a href="policy-learning.html" class="flex items-center justify-center w-8 h-8 -ml-1">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><polyline points="15 18 9 12 15 6"/></svg>
+    </a>
+    <h1 class="text-lg font-semibold">全部政策法规</h1>
+  </div>
+</header>
+<main class="px-4 py-4 space-y-4">
+  <div class="relative">
+    <span class="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--lm-muted-foreground)]">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    </span>
+    <input type="text" placeholder="搜索政策法规..." class="w-full pl-9 pr-3 py-2.5 text-sm rounded-lg border border-[var(--lm-border)] bg-white focus:outline-none focus:ring-2 focus:ring-[var(--lm-ring)]">
+  </div>
+  <div class="flex gap-2 overflow-x-auto pb-1 -mx-1 px-1 no-scrollbar">
+    <button class="shrink-0 px-3 py-1.5 text-xs rounded-full bg-[var(--lm-primary)] text-white font-medium">全部</button>
+    <button class="shrink-0 px-3 py-1.5 text-xs rounded-full bg-white border border-[var(--lm-border)] text-[var(--lm-muted-foreground)]">政策法规</button>
+    <button class="shrink-0 px-3 py-1.5 text-xs rounded-full bg-white border border-[var(--lm-border)] text-[var(--lm-muted-foreground)]">分档公示及规则</button>
+    <button class="shrink-0 px-3 py-1.5 text-xs rounded-full bg-white border border-[var(--lm-border)] text-[var(--lm-muted-foreground)]">终端建设</button>
+    <button class="shrink-0 px-3 py-1.5 text-xs rounded-full bg-white border border-[var(--lm-border)] text-[var(--lm-muted-foreground)]">品牌及价格</button>
+  </div>
+  <div class="bg-white rounded-xl border border-[var(--lm-border)] shadow-[var(--lm-shadow-1)] overflow-hidden">
+    <div class="flex items-start gap-3 p-4 border-b border-[var(--lm-border)] cursor-pointer hover:bg-[var(--lm-muted)]/50">
+      <div class="w-9 h-9 rounded-lg bg-[var(--lm-primary-50)] text-[var(--lm-primary)] flex items-center justify-center shrink-0 mt-0.5"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+      <div class="flex-1 min-w-0">
+        <div class="flex items-center gap-2"><span class="px-1.5 py-0.5 rounded text-xs bg-[var(--lm-state-error)] text-white font-medium">新</span><p class="text-sm font-medium leading-snug">《云南省峨山彝族自治县烟草制品零售点合理布局规划（修订征求意见稿）》</p></div>
+        <p class="text-xs text-[var(--lm-muted-foreground)] mt-1.5">为进一步优化零售点布局，现面向社会公开征求意见，意见反馈截止2026年8月31日...</p>
+        <span class="text-xs text-[var(--lm-muted-foreground)] mt-2 block">2026-08-05 · 专卖管理</span>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-[var(--lm-muted-foreground)] mt-1 shrink-0"><polyline points="9 18 15 12 9 6"/></svg>
+    </div>
+    <div class="flex items-start gap-3 p-4 border-b border-[var(--lm-border)] cursor-pointer hover:bg-[var(--lm-muted)]/50">
+      <div class="w-9 h-9 rounded-lg bg-[var(--lm-primary-50)] text-[var(--lm-primary)] flex items-center justify-center shrink-0 mt-0.5"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+      <div class="flex-1 min-w-0">
+        <div class="flex items-center gap-2"><span class="px-1.5 py-0.5 rounded text-xs bg-[var(--lm-state-error)] text-white font-medium">新</span><p class="text-sm font-medium leading-snug">"自选+平衡"精准投放模式解读</p></div>
+        <p class="text-xs text-[var(--lm-muted-foreground)] mt-1.5">解读新版投放模式：零售户自选品规+系统平衡分配，提升货源匹配精准度...</p>
+        <span class="text-xs text-[var(--lm-muted-foreground)] mt-2 block">2026-07-25 · 营销中心</span>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-[var(--lm-muted-foreground)] mt-1 shrink-0"><polyline points="9 18 15 12 9 6"/></svg>
+    </div>
+    <div class="flex items-start gap-3 p-4 border-b border-[var(--lm-border)] cursor-pointer hover:bg-[var(--lm-muted)]/50">
+      <div class="w-9 h-9 rounded-lg bg-[var(--lm-state-error-bg)] text-[var(--lm-state-error)] flex items-center justify-center shrink-0 mt-0.5"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg></div>
+      <div class="flex-1 min-w-0">
+        <p class="text-sm font-medium leading-snug">关于玉溪（青绿叠波）卷烟规格上市销售的通知</p>
+        <p class="text-xs text-[var(--lm-muted-foreground)] mt-1.5">玉溪（青绿叠波）将于2026年4月正式上市，首批投放全县零售客户...</p>
+        <span class="text-xs text-[var(--lm-muted-foreground)] mt-2 block">2026-03-28 · 营销中心</span>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-[var(--lm-muted-foreground)] mt-1 shrink-0"><polyline points="9 18 15 12 9 6"/></svg>
+    </div>
+    <div class="flex items-start gap-3 p-4 border-b border-[var(--lm-border)] cursor-pointer hover:bg-[var(--lm-muted)]/50">
+      <div class="w-9 h-9 rounded-lg bg-[var(--lm-state-success-bg)] text-[var(--lm-state-success)] flex items-center justify-center shrink-0 mt-0.5"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+      <div class="flex-1 min-w-0">
+        <p class="text-sm font-medium leading-snug">2026年4月零售客户分档结果公示</p>
+        <p class="text-xs text-[var(--lm-muted-foreground)] mt-1.5">本季度零售客户档位测评结果已出，共涉及全县1,256户零售客户，请各客户核对档位...</p>
+        <span class="text-xs text-[var(--lm-muted-foreground)] mt-2 block">2026-04-15 · 营销中心</span>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-[var(--lm-muted-foreground)] mt-1 shrink-0"><polyline points="9 18 15 12 9 6"/></svg>
+    </div>
+    <div class="flex items-start gap-3 p-4 border-b border-[var(--lm-border)] cursor-pointer hover:bg-[var(--lm-muted)]/50">
+      <div class="w-9 h-9 rounded-lg bg-[var(--lm-state-success-bg)] text-[var(--lm-state-success)] flex items-center justify-center shrink-0 mt-0.5"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+      <div class="flex-1 min-w-0">
+        <p class="text-sm font-medium leading-snug">2026年4月雪茄烟零售客户分档结果公示</p>
+        <p class="text-xs text-[var(--lm-muted-foreground)] mt-1.5">雪茄烟零售客户专项档位测评结果公示，共涉及86户雪茄烟零售客户...</p>
+        <span class="text-xs text-[var(--lm-muted-foreground)] mt-2 block">2026-04-15 · 营销中心</span>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-[var(--lm-muted-foreground)] mt-1 shrink-0"><polyline points="9 18 15 12 9 6"/></svg>
+    </div>
+    <div class="flex items-start gap-3 p-4 border-b border-[var(--lm-border)] cursor-pointer hover:bg-[var(--lm-muted)]/50">
+      <div class="w-9 h-9 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center shrink-0 mt-0.5"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+      <div class="flex-1 min-w-0">
+        <p class="text-sm font-medium leading-snug">"云香印象"卷烟零售终端建设条件与标准</p>
+        <p class="text-xs text-[var(--lm-muted-foreground)] mt-1.5">明确"云香印象"终端建设的准入条件、形象标准、设施要求及验收流程...</p>
+        <span class="text-xs text-[var(--lm-muted-foreground)] mt-2 block">2026-03-20 · 营销中心</span>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-[var(--lm-muted-foreground)] mt-1 shrink-0"><polyline points="9 18 15 12 9 6"/></svg>
+    </div>
+    <div class="flex items-start gap-3 p-4 border-b border-[var(--lm-border)] cursor-pointer hover:bg-[var(--lm-muted)]/50">
+      <div class="w-9 h-9 rounded-lg bg-[var(--lm-state-info-bg)] text-[var(--lm-state-info)] flex items-center justify-center shrink-0 mt-0.5"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+      <div class="flex-1 min-w-0">
+        <p class="text-sm font-medium leading-snug">卷烟零售客户分档管理办法</p>
+        <p class="text-xs text-[var(--lm-muted-foreground)] mt-1.5">规范分档测评指标、测评周期、档位调整规则及异议处理流程...</p>
+        <span class="text-xs text-[var(--lm-muted-foreground)] mt-2 block">2026-01-10 · 营销中心</span>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-[var(--lm-muted-foreground)] mt-1 shrink-0"><polyline points="9 18 15 12 9 6"/></svg>
+    </div>
+    <div class="flex items-start gap-3 p-4 cursor-pointer hover:bg-[var(--lm-muted)]/50">
+      <div class="w-9 h-9 rounded-lg bg-[var(--lm-state-warning-bg)] text-[var(--lm-state-warning)] flex items-center justify-center shrink-0 mt-0.5"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+      <div class="flex-1 min-w-0">
+        <p class="text-sm font-medium leading-snug">关于部分卷烟和雪茄烟产品价格调整的通知</p>
+        <p class="text-xs text-[var(--lm-muted-foreground)] mt-1.5">涉及玉溪（软）、红塔山（硬经典100）等品规批发价及零售指导价调整...</p>
+        <span class="text-xs text-[var(--lm-muted-foreground)] mt-2 block">2026-03-15 · 价格管理</span>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-[var(--lm-muted-foreground)] mt-1 shrink-0"><polyline points="9 18 15 12 9 6"/></svg>
+    </div>
+  </div>
+  <div class="text-center text-xs text-[var(--lm-muted-foreground)] py-2">共 8 条政策</div>
+</main>
+  </div>
+</body>
+</html>
